@@ -21,14 +21,14 @@ checkPaths:
   - library/pcrs/**
   - library/modules/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: 510aa027c6a7a35e84d26d640186338f2f291fc1
+lastReviewedCommit: f2383cbcc512f42291b6d8e2d575a378fd00fc78
 ---
 
 # Authoring Guide
 
 Author PCR content in canonical PCR files under `library/pcrs/`.
 
-Agents should start from `builder/AGENTS.md`, then follow the appropriate runbook under `builder/agent-workflows/` and the contracts under `builder/contracts/`.
+Agents should start from `builder/AGENTS.md`, then follow the appropriate runbook under `builder/agent-workflows/`, the tool notes under `builder/tools/`, and the contracts under `builder/contracts/`.
 
 Use mapping files under `classifications/mappings/` to connect external classification codes to canonical PCR ids.
 
@@ -79,7 +79,7 @@ Each inventory flow row should carry the selected flow UUID when available, the 
 
 ## Tiangong CLI Evidence
 
-Use `tiangong-lca-cli` as the preferred authoring evidence tool when PCR content refers to Tiangong database rows. From the workspace, either use an installed `tiangong-lca` binary or the sibling CLI repo:
+Use `tiangong-lca-cli` as the preferred authoring evidence tool when PCR content refers to Tiangong database rows. See `builder/tools/tiangong-lca-cli.md` for the compact operational contract. From the workspace, either use an installed `tiangong-lca` binary or the sibling CLI repo:
 
 ```bash
 cd ../tiangong-lca-cli
@@ -99,6 +99,8 @@ Every database-backed selection should record in the PCR content:
 
 Do not write CLI lookup traces, command history, API keys, access tokens, session paths, or other private runtime details into PCR files. The Tiangong database is the default source for UUID-bearing rows and does not need to be repeated in `Data Sources`.
 
+If the CLI is unavailable during create work, draft semantic candidates without UUIDs and record unresolved identity gaps in `manifest.yaml` review metadata. Do not invent UUIDs or support rows.
+
 ## Data Sources and Ranges
 
 Every material PCR should include `Data Sources`. Use stable source ids and reference them from inventory rows.
@@ -111,6 +113,8 @@ For ranges, distinguish:
 - `site_specific`: value must be provided by the foreground model
 
 Flow identity sources and range sources can differ. A flow UUID may come from a CLI flow search while its amount range comes from a process row, literature source, method formula, or foreground site data.
+
+Create workflows may use common sense to initialize candidate processes, likely input/output flows, and search terms. Update workflows are input-driven: begin from the specific user request, document, file, dataset, reviewer feedback, or database alignment change, then update only the affected PCR sections and lifecycle metadata.
 
 ## CPC Scaffolded PCRs
 

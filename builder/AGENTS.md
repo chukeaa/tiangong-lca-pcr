@@ -6,10 +6,12 @@ This directory defines how agents construct, update, validate, and publish PCR r
 
 1. `builder/AGENTS.md`
 2. `builder/agent-workflows/<task>.md`
-3. `builder/contracts/*.md`
-4. `builder/vocab/*.yaml`
-5. relevant `builder/method/*.md`
-6. target PCR directory under `library/pcrs/**`
+3. `builder/tools/tiangong-lca-cli.md`
+4. `builder/tools/data-sources-and-tools.md`
+5. `builder/contracts/*.md`
+6. `builder/vocab/*.yaml`
+7. relevant `builder/method/*.md`
+8. target PCR directory under `library/pcrs/**`
 
 ## Non-Negotiable Rules
 
@@ -22,6 +24,8 @@ This directory defines how agents construct, update, validate, and publish PCR r
 - Do not list Tiangong database rows in `Data Sources` when they only support UUID identity. Tiangong is the default source for UUID-bearing rows.
 - List external literature, official guidance, standards, methods, and non-default quantitative evidence in `Data Sources`.
 - Keep classification codes in `classifications/mappings/**` and `classification_refs`, not in canonical PCR directory names.
+- During create workflows, common sense may initialize candidate processes, qualifiers, and likely flows, but UUIDs and quantitative ranges must be evidence-backed before they are treated as final PCR content.
+- During update workflows, identify the driving input first, such as a user requirement, source document, data file, reviewer request, or Tiangong database alignment change.
 
 ## Required Commands
 
@@ -47,5 +51,6 @@ An authored PCR is not acceptable unless:
 - measurement and unit rules constrain only modelling consistency, conversion, or validation behavior
 - process inventory is organized by process, direction, flow type, and individual flow row
 - range, basis, evidence, and source references follow the controlled vocabularies
+- quantitative ranges, factors, boundary rules, and allocation rules cite non-default evidence when they constrain modelling choices
 - bilingual Markdown files describe the same rule
 - `structured.yaml` reflects the canonical Markdown after sync

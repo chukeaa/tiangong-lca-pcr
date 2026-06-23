@@ -14,6 +14,7 @@ builder/agent-workflows/
 builder/contracts/
 builder/vocab/
 builder/method/
+builder/tools/
 builder/prompts/
 ```
 
@@ -22,6 +23,7 @@ builder/prompts/
 - `contracts/` defines durable authoring contracts for Markdown, manifest, structured projection, evidence, and UUID references.
 - `vocab/` contains controlled vocabularies intended for future lint enforcement.
 - `method/` contains reusable modelling method notes that support the contracts.
+- `tools/` explains authoring-time tools, Tiangong CLI lookup, and usable evidence sources.
 - `prompts/` contains thin entry prompts for Codex, Claude Code, and PCR reviewers.
 
 ## Builder CLI
@@ -47,6 +49,8 @@ Generated PCR scaffolds use the current authoring skeleton:
 - process inventory organized by process, then inputs/outputs, then product/waste/elementary flows
 - UUID-only Tiangong references in PCR Markdown
 - external data sources for literature, standards, official guidance, and non-default range evidence
+
+Create workflows may use common sense to initialize candidate processes and likely flow lists, but final UUIDs and quantitative constraints must be backed by Tiangong lookup or cited sources. Update workflows are input-driven and should start from the specific user request, source file, reviewer comment, dataset, or database alignment change that motivates the edit.
 
 The direct CLI entry point is:
 

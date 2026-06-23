@@ -22,7 +22,7 @@ checkPaths:
   - library/modules/**
   - docs/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: 510aa027c6a7a35e84d26d640186338f2f291fc1
+lastReviewedCommit: f2383cbcc512f42291b6d8e2d575a378fd00fc78
 ---
 
 # TianGong LCA PCR Library
@@ -38,7 +38,7 @@ PCR records are canonical methodology documents. Classification systems such as 
 - `library/indexes/`: generated and maintained PCR indexes.
 - `classifications/systems/`: source and normalized classification-system data.
 - `classifications/mappings/`: mappings from external classification codes to canonical PCR ids.
-- `builder/`: agent workflows, authoring contracts, controlled vocabularies, prompts, templates, schemas, scripts, and construction method documents for building the PCR library.
+- `builder/`: agent workflows, authoring tools, authoring contracts, controlled vocabularies, prompts, templates, schemas, scripts, and construction method documents for building the PCR library.
 - `docs/`: project-level architecture and authoring notes.
 
 ## PCR Record Shape
@@ -80,6 +80,8 @@ npm run validate
 `pcr:sync-structured` regenerates `structured.yaml` from canonical Markdown. `pcr:bump` updates the manifest version lifecycle. `pcr:publish` syncs `structured.yaml` and marks the manifest publication state.
 
 PCR authors may use `tiangong-lca-cli` to search Tiangong database flow/process/lifecyclemodel records and copy selected UUID references into PCR content. The CLI is an authoring evidence tool, not a runtime dependency of this repository.
+
+Builder tool notes under `builder/tools/` explain how to use Tiangong CLI lookup and which external sources are appropriate for ranges, factors, process decomposition, boundary rules, and allocation rules. Create workflows may use common sense to initialize candidates; update workflows should start from a specific input such as a user instruction, source file, reviewer comment, dataset, or database alignment change.
 
 ## Initial Status
 

@@ -23,7 +23,7 @@ checkPaths:
   - library/modules/**
   - docs/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: 510aa027c6a7a35e84d26d640186338f2f291fc1
+lastReviewedCommit: f2383cbcc512f42291b6d8e2d575a378fd00fc78
 ---
 
 # AGENTS.md - TianGong LCA PCR Library
@@ -87,7 +87,7 @@ Mapping files are the authoritative link from external classification codes to c
 
 The builder CLI lives under `builder/cli/`.
 
-Agent-facing PCR production guidance lives under `builder/`. Read `builder/AGENTS.md` before using `builder/agent-workflows/**`, `builder/contracts/**`, `builder/vocab/**`, or `builder/prompts/**`.
+Agent-facing PCR production guidance lives under `builder/`. Read `builder/AGENTS.md` before using `builder/agent-workflows/**`, `builder/tools/**`, `builder/contracts/**`, `builder/vocab/**`, or `builder/prompts/**`.
 
 Use:
 
@@ -126,6 +126,8 @@ tiangong-lca flow get --id <flow-id> --json
 ```
 
 PCR content stores selected Tiangong UUIDs without dataset versions. Do not include CLI command traces, search logs, API keys, session files, or private runtime details in PCR Markdown or `structured.yaml`. The Tiangong database is the default source for UUID-bearing references, so list only external literature, standards, official guidance, or other non-default evidence in `Data Sources`.
+
+For create workflows, common sense may initialize candidate processes, likely flows, qualifiers, and search terms, but UUIDs and quantitative constraints require Tiangong lookup or external evidence before they are final. For update workflows, identify the driving input first, then update only the affected PCR files, source ids, structured projection, and manifest lifecycle metadata.
 
 ## Default Load Order
 

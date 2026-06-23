@@ -22,7 +22,7 @@ checkPaths:
   - classifications/**
   - library/modules/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: 510aa027c6a7a35e84d26d640186338f2f291fc1
+lastReviewedCommit: f2383cbcc512f42291b6d8e2d575a378fd00fc78
 ---
 
 # Architecture
@@ -35,7 +35,7 @@ classification code -> mapping -> canonical PCR -> modules -> rendered PCR
 
 Canonical PCR records live under `library/pcrs/`. Classification source data and mappings live under `classifications/`.
 
-Builder assets under `builder/` define the agent authoring system: workflows describe PCR production steps, contracts define required artifact shapes, vocabularies provide controlled values for future linting, and prompts provide thin entrypoints for agent tools.
+Builder assets under `builder/` define the agent authoring system: workflows describe PCR production steps, tool notes explain Tiangong CLI and evidence-source use, contracts define required artifact shapes, vocabularies provide controlled values for future linting, and prompts provide thin entrypoints for agent tools.
 
 For CPC-backed bootstrapping, the builder stores the official source file and normalized hierarchy under `classifications/systems/cpc/<version>/`, then writes an explicit mapping file under `classifications/mappings/`. The CPC hierarchy seeds the initial PCR scaffold, but the generated PCR directory remains the canonical PCR identity.
 
@@ -56,5 +56,7 @@ This keeps one PCR identity while allowing English and Chinese markdown renderin
 Within one PCR identity, machine-facing rules are projected from canonical Markdown into `structured.yaml`. The projection carries the reference flow definition, measurement and unit rules, and process inventory. Inventory rules are process-oriented: a PCR describes common modelling processes, then each process separates `inputs` and `outputs`, then separates `product`, `waste`, and `elementary` flows.
 
 Database-backed references are not classification identity. PCR Markdown records selected Tiangong UUIDs without dataset versions, and `structured.yaml` is regenerated as the machine projection of those Markdown tables. CLI command traces and lookup logs are authoring-time evidence and do not belong in PCR content. External classification codes still belong in the mapping layer.
+
+Create workflows can start from common-sense product knowledge to initialize candidate process structures, but final UUIDs and quantitative modelling constraints require Tiangong lookup or cited evidence. Update workflows are input-driven and should preserve unaffected PCR content while applying a specific source, file, reviewer, user, classification, or database-alignment change.
 
 Generated leaf PCR scaffolds may remain empty until reviewed methodology content is authored. Governance and docpact checks cover the builder, mappings, modules, and project contracts; generated `library/pcrs/**` content is excluded until those PCR files become material authored records.
