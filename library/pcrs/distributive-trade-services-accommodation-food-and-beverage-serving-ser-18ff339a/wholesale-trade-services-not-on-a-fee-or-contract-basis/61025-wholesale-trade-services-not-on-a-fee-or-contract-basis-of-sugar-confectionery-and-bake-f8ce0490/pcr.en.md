@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.wholesale-trade-services-not-on-a-fee-or-contract-basis.61025-wholesale-trade-services-not-on-a-fee-or-contract-basis-of-sugar-confectionery-and-bake-f8ce0490
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Wholesale trade services, not on a fee or contract basis, of sugar confectionery and bakery products

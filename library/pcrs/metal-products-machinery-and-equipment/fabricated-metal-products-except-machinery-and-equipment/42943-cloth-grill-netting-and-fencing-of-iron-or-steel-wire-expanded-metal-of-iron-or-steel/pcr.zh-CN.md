@@ -1,8 +1,0 @@
----
-pcr_id: pcr.metal-products-machinery-and-equipment.fabricated-metal-products-except-machinery-and-equipment.42943-cloth-grill-netting-and-fencing-of-iron-or-steel-wire-expanded-metal-of-iron-or-steel
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.basic-metals.bismuth-antimony-manganese-chromium-and-articles-thereof-including-waste-and-scrap-of-b-b58e25dd
+title:
+  en: "Bismuth, antimony, manganese, chromium and articles thereof; including waste and scrap of bismuth or manganese"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "41603"
+    title: "Bismuth, antimony, manganese, chromium and articles thereof; including waste and scrap of bismuth or manganese"
+    mapping_type: exact

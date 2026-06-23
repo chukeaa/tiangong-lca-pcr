@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.community-social-and-personal-services.recreational-cultural-and-sporting-services.transfers-and-duplication-of-masters-services
+title:
+  en: "Transfers and duplication of masters services"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "community-social-and-personal-services"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "96132"
+    title: "Transfers and duplication of masters services"
+    mapping_type: exact

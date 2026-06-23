@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.special-purpose-machinery.stoves-grates-braziers-and-similar-non-electric-domestic-appliances-other-than-cooking-3665f7e2
+title:
+  en: "Stoves, grates, braziers and similar non-electric domestic appliances (other than cooking appliances and plate warmers) of iron or steel"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "44822"
+    title: "Stoves, grates, braziers and similar non-electric domestic appliances (other than cooking appliances and plate warmers) of iron or steel"
+    mapping_type: exact

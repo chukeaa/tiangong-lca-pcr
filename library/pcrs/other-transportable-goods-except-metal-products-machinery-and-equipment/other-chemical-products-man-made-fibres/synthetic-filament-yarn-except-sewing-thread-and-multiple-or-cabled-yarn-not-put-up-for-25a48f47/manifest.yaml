@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.other-chemical-products-man-made-fibres.synthetic-filament-yarn-except-sewing-thread-and-multiple-or-cabled-yarn-not-put-up-for-25a48f47
+title:
+  en: "Synthetic filament yarn (except sewing thread and multiple or cabled yarn), not put up for retail sale"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "other-transportable-goods-except-metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "35520"
+    title: "Synthetic filament yarn (except sewing thread and multiple or cabled yarn), not put up for retail sale"
+    mapping_type: exact

@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62391-mail-order-or-internet-retail-trade-services-of-solid-liquid-and-gaseous-fuels-and-rela-120a330b
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Mail order or Internet retail trade services, of solid, liquid and gaseous fuels and related products

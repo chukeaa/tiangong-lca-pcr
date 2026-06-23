@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.pulp-paper-and-paper-products-printed-matter-and-related-articles.other-paper-paperboard-cellulose-wadding-and-webs-of-cellulose-fibres-cut-to-size-or-sh-5a0d7bb3
+title:
+  en: "Other paper, paperboard, cellulose wadding and webs of cellulose fibres, cut to size or shape; cigarette paper, in booklets or tubes, or in rolls of a width not exceeding 5 cm; other articles of paper pulp, paper, paperboard, cellulose wadding or webs of cellulose fibres"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "other-transportable-goods-except-metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "32199"
+    title: "Other paper, paperboard, cellulose wadding and webs of cellulose fibres, cut to size or shape; cigarette paper, in booklets or tubes, or in rolls of a width not exceeding 5 cm; other articles of paper pulp, paper, paperboard, cellulose wadding or webs of cellulose fibres"
+    mapping_type: exact

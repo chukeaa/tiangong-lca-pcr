@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.general-purpose-machinery.transmission-shafts-and-cranks-bearing-housings-and-plain-shaft-bearings-gears-and-gear-dc0b68cf
+title:
+  en: "Transmission shafts and cranks; bearing housings and plain shaft bearings; gears and gearing; ball or roller screws, gear boxes and other speed changers; flywheels and pulleys; clutches and shaft couplings; articulated link chain"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "43320"
+    title: "Transmission shafts and cranks; bearing housings and plain shaft bearings; gears and gearing; ball or roller screws, gear boxes and other speed changers; flywheels and pulleys; clutches and shaft couplings; articulated link chain"
+    mapping_type: exact

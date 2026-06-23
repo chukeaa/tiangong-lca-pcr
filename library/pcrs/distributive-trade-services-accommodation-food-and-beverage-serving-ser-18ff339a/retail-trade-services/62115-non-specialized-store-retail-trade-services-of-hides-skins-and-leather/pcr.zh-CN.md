@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62115-non-specialized-store-retail-trade-services-of-hides-skins-and-leather
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

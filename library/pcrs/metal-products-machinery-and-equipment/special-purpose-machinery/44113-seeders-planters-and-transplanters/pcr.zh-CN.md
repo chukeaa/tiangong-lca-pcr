@@ -1,8 +1,0 @@
----
-pcr_id: pcr.metal-products-machinery-and-equipment.special-purpose-machinery.44113-seeders-planters-and-transplanters
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

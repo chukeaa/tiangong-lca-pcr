@@ -21,7 +21,7 @@ checkPaths:
   - builder/**
   - classifications/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: c9d9ff61cb5485fc9d90c0ee3d970d4df8ad3dbf
+lastReviewedCommit: edd52008c4e9be4c9e6e2bdcd53b0f9dd7f8e99d
 ---
 
 # Classification Policy
@@ -41,3 +41,5 @@ Supported mapping relation types should include:
 Classification imports should keep the official source artifact under `classifications/systems/<system>/<version>/raw/` with source metadata and checksum. Normalized files under the same system/version directory may be regenerated from the raw source.
 
 Mappings under `classifications/mappings/` are the maintained link from external codes to canonical PCR ids. Adding another classification system should normally add a new mapping layer, not a duplicate PCR tree.
+
+External classification codes must not become PCR directory names. If two classification leaves resolve to the same semantic PCR, map both leaves to that PCR id. If two different PCRs would otherwise share the same semantic slug, disambiguate with a short stable hash or a clearer semantic qualifier, not with the classification code.

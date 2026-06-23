@@ -1,0 +1,8 @@
+---
+pcr_id: pcr.metal-products-machinery-and-equipment.office-accounting-and-computing-machinery.units-performing-two-or-more-of-the-following-functions-printing-scanning-copying-faxing
+language: en
+status: scaffold
+sync_with: pcr.zh-CN.md
+---
+
+# Units performing two or more of the following functions: printing, scanning, copying, faxing

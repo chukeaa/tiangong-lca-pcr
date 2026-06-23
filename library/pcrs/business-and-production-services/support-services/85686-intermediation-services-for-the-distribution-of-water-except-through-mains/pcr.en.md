@@ -1,8 +1,0 @@
----
-pcr_id: pcr.business-and-production-services.support-services.85686-intermediation-services-for-the-distribution-of-water-except-through-mains
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Intermediation services for the distribution of water, except through mains

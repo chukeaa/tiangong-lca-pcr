@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62462-other-non-store-retail-trade-services-of-fittings-fixtures-and-ceramic-sanitary-fixtures
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

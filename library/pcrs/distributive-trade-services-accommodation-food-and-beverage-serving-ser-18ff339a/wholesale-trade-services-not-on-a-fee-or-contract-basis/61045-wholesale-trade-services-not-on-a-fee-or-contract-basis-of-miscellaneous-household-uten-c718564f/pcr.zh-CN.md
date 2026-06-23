@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.wholesale-trade-services-not-on-a-fee-or-contract-basis.61045-wholesale-trade-services-not-on-a-fee-or-contract-basis-of-miscellaneous-household-uten-c718564f
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

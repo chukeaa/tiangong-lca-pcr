@@ -1,8 +1,0 @@
----
-pcr_id: pcr.community-social-and-personal-services.recreational-cultural-and-sporting-services.96140-motion-picture-videotape-and-television-programme-distribution-services
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

@@ -1,8 +1,0 @@
----
-pcr_id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.wastes-or-scraps.39243-recovered-waste-and-scrap-paper-or-paperboard-made-mainly-of-mechanical-pulp-newspapers-d051b225
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Recovered (waste and scrap) paper or paperboard, made mainly of mechanical pulp (newspapers, journals and similar)

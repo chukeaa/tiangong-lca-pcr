@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.business-and-production-services.maintenance-repair-and-installation-except-construction-services.installation-services-of-mainframe-computers
+title:
+  en: "Installation services of mainframe computers"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "business-and-production-services"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "87331"
+    title: "Installation services of mainframe computers"
+    mapping_type: exact

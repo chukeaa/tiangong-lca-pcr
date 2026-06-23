@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.food-products-beverages-and-tobacco-textiles-apparel-and-leather-products.yarn-and-thread-woven-and-tufted-textile-fabrics.woven-fabrics-of-cotton-containing-less-than-85-by-weight-of-cotton-mixed-mainly-or-sol-4647ce51
+title:
+  en: "Woven fabrics of cotton, containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "food-products-beverages-and-tobacco-textiles-apparel-and-leather-products"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "26630"
+    title: "Woven fabrics of cotton, containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres"
+    mapping_type: exact

@@ -1,8 +1,0 @@
----
-pcr_id: pcr.metal-products-machinery-and-equipment.special-purpose-machinery.44141-pedestrian-controlled-tractors
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Pedestrian controlled tractors

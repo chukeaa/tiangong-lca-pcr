@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62311-mail-order-or-internet-retail-trade-services-of-grain-and-oilseeds-and-oleaginous-fruit-d030aefc
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Mail order or Internet retail trade services, of grain and oilseeds and oleaginous fruits, seeds and animal feed

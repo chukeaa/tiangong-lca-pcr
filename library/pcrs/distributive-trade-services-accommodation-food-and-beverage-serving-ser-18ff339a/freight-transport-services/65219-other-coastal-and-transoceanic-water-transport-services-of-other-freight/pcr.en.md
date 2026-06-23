@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.freight-transport-services.65219-other-coastal-and-transoceanic-water-transport-services-of-other-freight
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Other coastal and transoceanic water transport services of other freight

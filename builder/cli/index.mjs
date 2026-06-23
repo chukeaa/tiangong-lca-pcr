@@ -302,18 +302,50 @@ function buildCpcModel(entries) {
   return { nodes, leaves };
 }
 
-function pcrDirectoryForLeaf(leaf) {
+function basePcrDirectoryForLeaf(leaf) {
   const section = leaf.path_titles[0] ?? "unclassified";
   const division = leaf.path_titles[1] ?? section;
   return path.join(
     boundedSlug(section, 80),
     boundedSlug(division, 80),
-    `${leaf.code}-${boundedSlug(leaf.title, 96)}`,
+    boundedSlug(leaf.title, 96),
   );
 }
 
 function pcrIdForLeaf(leaf) {
-  return `pcr.${pcrDirectoryForLeaf(leaf).replaceAll(path.sep, ".")}`;
+  const pcrDirectory = leaf.pcr_directory ?? basePcrDirectoryForLeaf(leaf);
+  return `pcr.${pcrDirectory.replaceAll(path.sep, ".")}`;
+}
+
+function withPcrIdentity(leaves) {
+  const leavesByBaseDirectory = new Map();
+  for (const leaf of leaves) {
+    const baseDirectory = basePcrDirectoryForLeaf(leaf);
+    const entries = leavesByBaseDirectory.get(baseDirectory) ?? [];
+    entries.push(leaf);
+    leavesByBaseDirectory.set(baseDirectory, entries);
+  }
+
+  const directoryByCode = new Map();
+  for (const [baseDirectory, entries] of leavesByBaseDirectory.entries()) {
+    if (entries.length === 1) {
+      directoryByCode.set(entries[0].code, baseDirectory);
+      continue;
+    }
+    for (const leaf of entries) {
+      directoryByCode.set(leaf.code, `${baseDirectory}-${stableHash(`${leaf.code}:${leaf.title}`)}`);
+    }
+  }
+
+  return leaves.map((leaf) => {
+    const pcrDirectory = directoryByCode.get(leaf.code);
+    return {
+      ...leaf,
+      pcr_directory: pcrDirectory,
+      pcr_dir: `library/pcrs/${pcrDirectory.replaceAll(path.sep, "/")}`,
+      pcr_id: `pcr.${pcrDirectory.replaceAll(path.sep, ".")}`,
+    };
+  });
 }
 
 function cpcLeafManifest(leaf, classificationVersion) {
@@ -441,6 +473,7 @@ function scaffoldCpc(options) {
 
   const entries = readCpcCsv(source);
   const { nodes, leaves } = buildCpcModel(entries);
+  const pcrLeaves = withPcrIdentity(leaves);
   const rawDir = path.join(root, "classifications/systems/cpc", classificationVersion, "raw");
   mkdirSync(rawDir, { recursive: true });
   const rawTarget = path.join(rawDir, path.basename(source));
@@ -493,21 +526,21 @@ retrieved_at_utc: ${yamlString(new Date().toISOString())}
     classification_system: "CPC",
     classification_version: classificationVersion,
     status: "scaffold",
-    leaves: leaves.map((leaf) => ({
+    leaves: pcrLeaves.map((leaf) => ({
       code: leaf.code,
       title: leaf.title,
-      pcr_dir: `library/pcrs/${pcrDirectoryForLeaf(leaf).replaceAll(path.sep, "/")}`,
+      pcr_dir: leaf.pcr_dir,
       pcr_id: pcrIdForLeaf(leaf),
     })),
   });
   writeText(
     root,
     `classifications/mappings/cpc-${classificationVersion}-to-pcr.yaml`,
-    mappingYaml(classificationVersion, leaves),
+    mappingYaml(classificationVersion, pcrLeaves),
   );
 
-  for (const leaf of leaves) {
-    const pcrRoot = path.join("library/pcrs", pcrDirectoryForLeaf(leaf));
+  for (const leaf of pcrLeaves) {
+    const pcrRoot = path.join("library/pcrs", leaf.pcr_directory);
     writeIfMissing(root, path.join(pcrRoot, "manifest.yaml"), cpcLeafManifest(leaf, classificationVersion));
     writeIfMissing(root, path.join(pcrRoot, "pcr.en.md"), cpcLeafMarkdown(leaf, "en"));
     writeIfMissing(root, path.join(pcrRoot, "pcr.zh-CN.md"), cpcLeafMarkdown(leaf, "zh-CN"));

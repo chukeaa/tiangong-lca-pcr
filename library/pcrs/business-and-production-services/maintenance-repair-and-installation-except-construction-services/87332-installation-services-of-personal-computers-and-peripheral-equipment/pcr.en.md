@@ -1,8 +1,0 @@
----
-pcr_id: pcr.business-and-production-services.maintenance-repair-and-installation-except-construction-services.87332-installation-services-of-personal-computers-and-peripheral-equipment
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Installation services of personal computers and peripheral equipment

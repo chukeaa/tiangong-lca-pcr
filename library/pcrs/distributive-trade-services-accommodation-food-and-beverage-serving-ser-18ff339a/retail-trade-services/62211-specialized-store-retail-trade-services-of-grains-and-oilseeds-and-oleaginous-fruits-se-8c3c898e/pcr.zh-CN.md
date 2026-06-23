@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62211-specialized-store-retail-trade-services-of-grains-and-oilseeds-and-oleaginous-fruits-se-8c3c898e
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

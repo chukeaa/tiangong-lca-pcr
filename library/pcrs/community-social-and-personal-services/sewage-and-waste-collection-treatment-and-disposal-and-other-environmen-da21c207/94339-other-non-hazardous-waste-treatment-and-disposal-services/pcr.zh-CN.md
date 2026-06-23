@@ -1,8 +1,0 @@
----
-pcr_id: pcr.community-social-and-personal-services.sewage-and-waste-collection-treatment-and-disposal-and-other-environmen-da21c207.94339-other-non-hazardous-waste-treatment-and-disposal-services
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

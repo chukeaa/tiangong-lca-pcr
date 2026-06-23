@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.wastes-or-scraps.rags-scrap-twine-cordage-rope-and-cables-and-worn-out-articles-of-twine-cordage-rope-or-aab5ad94
+title:
+  en: "Rags, scrap twine, cordage, rope and cables and worn out articles of twine, cordage, rope or cables, of textile materials"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "other-transportable-goods-except-metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "39218"
+    title: "Rags, scrap twine, cordage, rope and cables and worn out articles of twine, cordage, rope or cables, of textile materials"
+    mapping_type: exact

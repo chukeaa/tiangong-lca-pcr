@@ -1,8 +1,0 @@
----
-pcr_id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.rubber-and-plastics-products.36920-self-adhesive-plates-sheets-film-foil-tape-strip-and-other-flat-shapes-of-plastics
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

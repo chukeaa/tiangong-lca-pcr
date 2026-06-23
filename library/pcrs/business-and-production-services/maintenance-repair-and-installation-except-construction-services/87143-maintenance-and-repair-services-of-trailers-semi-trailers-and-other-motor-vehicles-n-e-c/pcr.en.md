@@ -1,8 +1,0 @@
----
-pcr_id: pcr.business-and-production-services.maintenance-repair-and-installation-except-construction-services.87143-maintenance-and-repair-services-of-trailers-semi-trailers-and-other-motor-vehicles-n-e-c
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Maintenance and repair services of trailers, semi-trailers and other motor vehicles n.e.c.

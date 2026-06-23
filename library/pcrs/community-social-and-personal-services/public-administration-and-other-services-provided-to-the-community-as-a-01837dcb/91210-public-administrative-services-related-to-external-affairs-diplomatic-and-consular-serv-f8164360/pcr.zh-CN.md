@@ -1,8 +1,0 @@
----
-pcr_id: pcr.community-social-and-personal-services.public-administration-and-other-services-provided-to-the-community-as-a-01837dcb.91210-public-administrative-services-related-to-external-affairs-diplomatic-and-consular-serv-f8164360
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

@@ -22,7 +22,7 @@ checkPaths:
   - library/modules/**
   - docs/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: c9d9ff61cb5485fc9d90c0ee3d970d4df8ad3dbf
+lastReviewedCommit: edd52008c4e9be4c9e6e2bdcd53b0f9dd7f8e99d
 ---
 
 # TianGong LCA PCR Library
@@ -62,7 +62,7 @@ npm run pcr:scaffold:cpc -- --source <cpc-structure.csv> --classification-versio
 npm run validate
 ```
 
-`pcr:scaffold:cpc` imports a CPC structure CSV, stores the raw and normalized classification data under `classifications/systems/cpc/<version>/`, writes a CPC-to-PCR mapping file, and creates empty bilingual PCR directories for leaf classes only.
+`pcr:scaffold:cpc` imports a CPC structure CSV, stores the raw and normalized classification data under `classifications/systems/cpc/<version>/`, writes a CPC-to-PCR mapping file, and creates empty bilingual PCR directories for leaf classes only. PCR directory names are semantic slugs, not CPC codes; the CPC code remains in the mapping layer and PCR metadata.
 
 ## Initial Status
 

@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62332-mail-order-or-internet-retail-trade-services-of-household-linens-curtains-net-curtains-91da45b0
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Mail order or Internet retail trade services, of household linens, curtains, net curtains and diverse household articles of textile materials

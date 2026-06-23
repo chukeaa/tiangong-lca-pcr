@@ -1,0 +1,8 @@
+---
+pcr_id: pcr.metal-products-machinery-and-equipment.general-purpose-machinery.spark-ignition-reciprocating-or-rotary-internal-combustion-piston-engines-for-aircraft
+language: en
+status: scaffold
+sync_with: pcr.zh-CN.md
+---
+
+# Spark-ignition reciprocating or rotary internal combustion piston engines for aircraft

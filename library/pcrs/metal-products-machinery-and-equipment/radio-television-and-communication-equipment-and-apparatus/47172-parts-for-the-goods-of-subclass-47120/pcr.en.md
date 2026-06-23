@@ -1,8 +1,0 @@
----
-pcr_id: pcr.metal-products-machinery-and-equipment.radio-television-and-communication-equipment-and-apparatus.47172-parts-for-the-goods-of-subclass-47120
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Parts for the goods of subclass 47120

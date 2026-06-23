@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.electrical-machinery-and-apparatus.carbon-electrodes-carbon-brushes-lamp-carbons-battery-carbons-and-other-articles-of-gra-a6c41597
+title:
+  en: "Carbon electrodes, carbon brushes, lamp carbons, battery carbons and other articles of graphite or other carbon of a kind used for electrical purposes"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "46950"
+    title: "Carbon electrodes, carbon brushes, lamp carbons, battery carbons and other articles of graphite or other carbon of a kind used for electrical purposes"
+    mapping_type: exact

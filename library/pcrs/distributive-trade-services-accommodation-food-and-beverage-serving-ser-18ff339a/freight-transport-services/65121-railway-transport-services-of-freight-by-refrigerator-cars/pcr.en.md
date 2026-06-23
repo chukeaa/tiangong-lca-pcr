@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.freight-transport-services.65121-railway-transport-services-of-freight-by-refrigerator-cars
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Railway transport services of freight by refrigerator cars

@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62385-mail-order-or-internet-retail-trade-services-of-electronic-and-telecommunications-equip-39422738
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Mail order or Internet retail trade services, of electronic and telecommunications equipment and parts

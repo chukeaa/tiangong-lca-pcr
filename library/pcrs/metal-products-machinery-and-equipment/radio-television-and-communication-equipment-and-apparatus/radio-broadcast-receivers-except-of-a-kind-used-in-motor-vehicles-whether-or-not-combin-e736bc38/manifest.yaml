@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.radio-television-and-communication-equipment-and-apparatus.radio-broadcast-receivers-except-of-a-kind-used-in-motor-vehicles-whether-or-not-combin-e736bc38
+title:
+  en: "Radio broadcast receivers (except of a kind used in motor vehicles), whether or not combined with sound recording or reproducing apparatus or a clock"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "47311"
+    title: "Radio broadcast receivers (except of a kind used in motor vehicles), whether or not combined with sound recording or reproducing apparatus or a clock"
+    mapping_type: exact

@@ -1,8 +1,0 @@
----
-pcr_id: pcr.metal-products-machinery-and-equipment.medical-appliances-precision-and-optical-instruments-watches-and-clocks.48263-gas-liquid-or-electricity-supply-or-production-meters
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Gas, liquid or electricity supply or production meters

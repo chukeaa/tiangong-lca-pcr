@@ -1,8 +1,0 @@
----
-pcr_id: pcr.metal-products-machinery-and-equipment.basic-metals.41281-line-pipe-of-a-kind-used-for-oil-or-gas-pipelines-seamless-of-steel
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

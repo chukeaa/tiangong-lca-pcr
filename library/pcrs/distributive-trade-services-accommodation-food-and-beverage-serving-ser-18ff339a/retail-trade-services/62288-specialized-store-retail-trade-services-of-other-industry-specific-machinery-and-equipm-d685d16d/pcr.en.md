@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62288-specialized-store-retail-trade-services-of-other-industry-specific-machinery-and-equipm-d685d16d
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Specialized store retail trade services, of other industry-specific machinery and equipment and related operating supplies

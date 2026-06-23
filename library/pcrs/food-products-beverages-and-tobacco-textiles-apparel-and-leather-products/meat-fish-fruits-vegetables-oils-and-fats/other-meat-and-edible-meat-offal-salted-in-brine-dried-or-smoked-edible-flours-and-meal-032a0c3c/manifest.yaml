@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.food-products-beverages-and-tobacco-textiles-apparel-and-leather-products.meat-fish-fruits-vegetables-oils-and-fats.other-meat-and-edible-meat-offal-salted-in-brine-dried-or-smoked-edible-flours-and-meal-032a0c3c
+title:
+  en: "Other meat and edible meat offal, salted, in brine, dried or smoked; edible flours and meals of meat or meat offal"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "food-products-beverages-and-tobacco-textiles-apparel-and-leather-products"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "21183"
+    title: "Other meat and edible meat offal, salted, in brine, dried or smoked; edible flours and meals of meat or meat offal"
+    mapping_type: exact

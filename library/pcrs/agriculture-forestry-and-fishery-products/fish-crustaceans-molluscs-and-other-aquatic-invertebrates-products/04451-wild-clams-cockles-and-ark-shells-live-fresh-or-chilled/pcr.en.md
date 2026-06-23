@@ -1,8 +1,0 @@
----
-pcr_id: pcr.agriculture-forestry-and-fishery-products.fish-crustaceans-molluscs-and-other-aquatic-invertebrates-products.04451-wild-clams-cockles-and-ark-shells-live-fresh-or-chilled
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Wild clams, cockles and ark shells, live, fresh or chilled

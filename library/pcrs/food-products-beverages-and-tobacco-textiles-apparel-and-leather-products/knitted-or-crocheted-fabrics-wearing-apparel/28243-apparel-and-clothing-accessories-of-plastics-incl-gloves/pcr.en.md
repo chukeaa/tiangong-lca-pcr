@@ -1,8 +1,0 @@
----
-pcr_id: pcr.food-products-beverages-and-tobacco-textiles-apparel-and-leather-products.knitted-or-crocheted-fabrics-wearing-apparel.28243-apparel-and-clothing-accessories-of-plastics-incl-gloves
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Apparel and clothing accessories of plastics (incl. gloves)

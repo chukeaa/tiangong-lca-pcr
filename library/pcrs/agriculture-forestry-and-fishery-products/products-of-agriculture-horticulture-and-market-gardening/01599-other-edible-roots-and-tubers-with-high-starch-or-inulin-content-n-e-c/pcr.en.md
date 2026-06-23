@@ -1,8 +1,0 @@
----
-pcr_id: pcr.agriculture-forestry-and-fishery-products.products-of-agriculture-horticulture-and-market-gardening.01599-other-edible-roots-and-tubers-with-high-starch-or-inulin-content-n-e-c
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Other edible roots and tubers with high starch or inulin content, n.e.c.

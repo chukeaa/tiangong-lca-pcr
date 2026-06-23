@@ -1,8 +1,0 @@
----
-pcr_id: pcr.business-and-production-services.research-and-development-services.81159-research-and-development-services-in-other-agricultural-and-veterinary-sciences
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Research and development services in other agricultural and veterinary sciences

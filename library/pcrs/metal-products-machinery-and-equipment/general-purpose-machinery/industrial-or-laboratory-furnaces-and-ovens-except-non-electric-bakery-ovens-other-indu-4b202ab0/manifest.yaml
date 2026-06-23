@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.general-purpose-machinery.industrial-or-laboratory-furnaces-and-ovens-except-non-electric-bakery-ovens-other-indu-4b202ab0
+title:
+  en: "Industrial or laboratory furnaces and ovens, except non-electric bakery ovens; other industrial or laboratory induction or dielectric heating equipment"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "43420"
+    title: "Industrial or laboratory furnaces and ovens, except non-electric bakery ovens; other industrial or laboratory induction or dielectric heating equipment"
+    mapping_type: exact

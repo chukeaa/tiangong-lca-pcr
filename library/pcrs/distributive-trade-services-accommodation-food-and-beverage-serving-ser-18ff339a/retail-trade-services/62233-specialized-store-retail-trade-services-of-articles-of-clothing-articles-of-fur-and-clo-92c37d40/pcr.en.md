@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62233-specialized-store-retail-trade-services-of-articles-of-clothing-articles-of-fur-and-clo-92c37d40
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Specialized store retail trade services, of articles of clothing, articles of fur and clothing accessories

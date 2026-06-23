@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.medical-appliances-precision-and-optical-instruments-watches-and-clocks.revolution-counters-production-counters-taximeters-mileometers-pedometers-and-the-like-047b2a38
+title:
+  en: "Revolution counters, production counters, taximeters, mileometers, pedometers and the like; speed indicators and tachometers, except hydrographic and meteorological instruments; stroboscopes"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "48264"
+    title: "Revolution counters, production counters, taximeters, mileometers, pedometers and the like; speed indicators and tachometers, except hydrographic and meteorological instruments; stroboscopes"
+    mapping_type: exact

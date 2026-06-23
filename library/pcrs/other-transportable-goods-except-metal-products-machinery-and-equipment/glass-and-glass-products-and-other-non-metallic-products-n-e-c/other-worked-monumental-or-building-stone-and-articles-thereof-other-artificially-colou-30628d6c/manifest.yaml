@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.glass-and-glass-products-and-other-non-metallic-products-n-e-c.other-worked-monumental-or-building-stone-and-articles-thereof-other-artificially-colou-30628d6c
+title:
+  en: "Other worked monumental or building stone and articles thereof; other artificially coloured granules, chippings and powder of natural stone; articles of agglomerated slate"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "other-transportable-goods-except-metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "37690"
+    title: "Other worked monumental or building stone and articles thereof; other artificially coloured granules, chippings and powder of natural stone; articles of agglomerated slate"
+    mapping_type: exact

@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.other-non-store-retail-trade-services-of-fish-and-other-seafood
+title:
+  en: "Other non-store retail trade services, of fish and other seafood"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "distributive-trade-services-accommodation-food-and-beverage-serving-services-transport-services-and-electricity-gas-and-water-distribution-services"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "62424"
+    title: "Other non-store retail trade services, of fish and other seafood"
+    mapping_type: exact

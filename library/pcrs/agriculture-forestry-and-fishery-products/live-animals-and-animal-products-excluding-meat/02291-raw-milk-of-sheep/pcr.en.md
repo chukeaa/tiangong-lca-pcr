@@ -1,8 +1,0 @@
----
-pcr_id: pcr.agriculture-forestry-and-fishery-products.live-animals-and-animal-products-excluding-meat.02291-raw-milk-of-sheep
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Raw milk of sheep

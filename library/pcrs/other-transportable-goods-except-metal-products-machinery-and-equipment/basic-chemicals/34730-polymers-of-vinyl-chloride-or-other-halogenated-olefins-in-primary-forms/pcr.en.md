@@ -1,8 +1,0 @@
----
-pcr_id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.basic-chemicals.34730-polymers-of-vinyl-chloride-or-other-halogenated-olefins-in-primary-forms
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Polymers of vinyl chloride or other halogenated olefins, in primary forms

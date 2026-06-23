@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.food-products-beverages-and-tobacco-textiles-apparel-and-leather-products.leather-and-leather-products-footwear.wooden-footwear-miscellaneous-special-footwear-and-other-footwear-n-e-c
+title:
+  en: "Wooden footwear, miscellaneous special footwear and other footwear n.e.c."
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "food-products-beverages-and-tobacco-textiles-apparel-and-leather-products"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "29520"
+    title: "Wooden footwear, miscellaneous special footwear and other footwear n.e.c."
+    mapping_type: exact

@@ -23,7 +23,7 @@ checkPaths:
   - library/modules/**
   - docs/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: c9d9ff61cb5485fc9d90c0ee3d970d4df8ad3dbf
+lastReviewedCommit: edd52008c4e9be4c9e6e2bdcd53b0f9dd7f8e99d
 ---
 
 # AGENTS.md - TianGong LCA PCR Library
@@ -57,6 +57,7 @@ Rules:
 - `structured.yaml` owns machine-oriented PCR rules such as reference flow patterns, inventory flow patterns, and QA rules.
 - Do not create parallel `pcrs/en/` and `pcrs/zh-CN/` directory trees.
 - Do not use CPC, HS, ISIC, NAICS, or another external classification system as the canonical PCR directory tree.
+- Do not include external classification codes in PCR directory names. Use semantic PCR slugs such as `wheat-seed`; keep CPC, HS, ISIC, NAICS, and similar codes in mappings and `classification_refs`.
 - If a classification leaf maps to an existing PCR, update the mapping file instead of duplicating the PCR.
 
 Reusable modules may use the same localized directory pattern:
@@ -99,7 +100,7 @@ Command meanings:
 
 - `init`: create required scaffold directories and repository guide files. It can also create a sample PCR directory with `node builder/cli/index.mjs init --sample-pcr <domain/path/slug> --pcr-id <id>`.
 - `lint`: validate required directories and enforce that every PCR directory with `manifest.yaml` also has `pcr.en.md`, `pcr.zh-CN.md`, and `structured.yaml`.
-- `pcr:scaffold:cpc`: import an official CPC structure CSV, normalize hierarchy files under `classifications/systems/cpc/<version>/`, create `classifications/mappings/cpc-<version>-to-pcr.yaml`, and create empty bilingual PCR directories for CPC leaf classes only.
+- `pcr:scaffold:cpc`: import an official CPC structure CSV, normalize hierarchy files under `classifications/systems/cpc/<version>/`, create `classifications/mappings/cpc-<version>-to-pcr.yaml`, and create empty bilingual PCR directories for CPC leaf classes only. Generated PCR directories use semantic slugs and do not include CPC codes.
 - `validate`: run `lint` and the builder CLI tests.
 
 Generated PCR leaf scaffolds under `library/pcrs/**` are intentionally excluded from docpact coverage. The builder, classification sources, mappings, schemas, modules, and project documents remain governed.

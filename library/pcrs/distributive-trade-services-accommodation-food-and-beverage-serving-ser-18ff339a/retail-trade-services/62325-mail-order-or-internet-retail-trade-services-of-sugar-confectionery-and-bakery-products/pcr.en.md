@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62325-mail-order-or-internet-retail-trade-services-of-sugar-confectionery-and-bakery-products
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Mail order or Internet retail trade services, of sugar confectionery and bakery products

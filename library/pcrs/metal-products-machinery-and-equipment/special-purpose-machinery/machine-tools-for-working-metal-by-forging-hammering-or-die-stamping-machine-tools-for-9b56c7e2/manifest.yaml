@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.special-purpose-machinery.machine-tools-for-working-metal-by-forging-hammering-or-die-stamping-machine-tools-for-9b56c7e2
+title:
+  en: "Machine-tools for working metal by forging, hammering or die-stamping; machine-tools for working metal by bending, folding, straightening, flattening, shearing, punching or notching; other presses for working metal or metal carbides"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "44217"
+    title: "Machine-tools for working metal by forging, hammering or die-stamping; machine-tools for working metal by bending, folding, straightening, flattening, shearing, punching or notching; other presses for working metal or metal carbides"
+    mapping_type: exact

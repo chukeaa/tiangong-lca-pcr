@@ -1,8 +1,0 @@
----
-pcr_id: pcr.food-products-beverages-and-tobacco-textiles-apparel-and-leather-products.meat-fish-fruits-vegetables-oils-and-fats.21396-peas-otherwise-prepared-or-preserved-not-frozen
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Peas, otherwise prepared or preserved, not frozen

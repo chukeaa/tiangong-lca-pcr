@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.office-accounting-and-computing-machinery.other-automatic-data-processing-machines-whether-or-not-containing-in-the-same-housing-565130a9
+title:
+  en: "Other automatic data processing machines whether or not containing in the same housing one or two of the following types of units: storage units, input units, output units"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "45250"
+    title: "Other automatic data processing machines whether or not containing in the same housing one or two of the following types of units: storage units, input units, output units"
+    mapping_type: exact

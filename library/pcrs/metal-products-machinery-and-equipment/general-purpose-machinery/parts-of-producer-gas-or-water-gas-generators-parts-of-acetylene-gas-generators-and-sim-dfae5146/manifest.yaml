@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.metal-products-machinery-and-equipment.general-purpose-machinery.parts-of-producer-gas-or-water-gas-generators-parts-of-acetylene-gas-generators-and-sim-dfae5146
+title:
+  en: "Parts of producer gas or water gas generators; parts of acetylene gas generators and similar water process gas generators; parts for the goods of subclass 43912; parts of refrigerating and freezing equipment and heat pumps; parts of machinery for the treatment of materials by a process involving a change of temperature"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "43941"
+    title: "Parts of producer gas or water gas generators; parts of acetylene gas generators and similar water process gas generators; parts for the goods of subclass 43912; parts of refrigerating and freezing equipment and heat pumps; parts of machinery for the treatment of materials by a process involving a change of temperature"
+    mapping_type: exact

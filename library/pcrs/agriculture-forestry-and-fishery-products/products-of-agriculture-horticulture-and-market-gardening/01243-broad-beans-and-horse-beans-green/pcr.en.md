@@ -1,8 +1,0 @@
----
-pcr_id: pcr.agriculture-forestry-and-fishery-products.products-of-agriculture-horticulture-and-market-gardening.01243-broad-beans-and-horse-beans-green
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Broad beans and horse beans, green

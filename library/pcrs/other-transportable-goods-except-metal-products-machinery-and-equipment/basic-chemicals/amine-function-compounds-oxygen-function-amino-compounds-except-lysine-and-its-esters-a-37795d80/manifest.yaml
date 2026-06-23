@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.basic-chemicals.amine-function-compounds-oxygen-function-amino-compounds-except-lysine-and-its-esters-a-37795d80
+title:
+  en: "Amine-function compounds; oxygen-function amino-compounds, except lysine and its esters and salts thereof and glutamic acid and its salts; ureines and their derivatives and salts thereof; carboxyimide-function compounds and imine-compounds; nitrile-function compounds; diazo-, azo- or azoxy-compounds; organic derivatives of hydrazine or of hydroxylamine; compounds with other nitrogen function"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "other-transportable-goods-except-metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "34150"
+    title: "Amine-function compounds; oxygen-function amino-compounds, except lysine and its esters and salts thereof and glutamic acid and its salts; ureines and their derivatives and salts thereof; carboxyimide-function compounds and imine-compounds; nitrile-function compounds; diazo-, azo- or azoxy-compounds; organic derivatives of hydrazine or of hydroxylamine; compounds with other nitrogen function"
+    mapping_type: exact

@@ -1,0 +1,58 @@
+schema_version: 1
+status: draft
+classification_seed:
+  system: CPC
+  version: "3.0"
+  code: "01111"
+  title: "Wheat, seed"
+reference_flows:
+  - id: wheat_seed_farm_gate_mass
+    label: "Wheat seed for sowing, cleaned and treated where applicable, at farm or seed plant gate"
+    flow_type: product
+    preferred_unit: kg
+    flow_properties:
+      - mass
+      - seed_count
+      - germination_rate
+      - moisture_content
+    common_units:
+      - kg
+      - tonne
+      - seed
+inventory_patterns:
+  - id: field_seed_production
+    process_scope: "field cultivation for seed multiplication"
+    required_product_inputs:
+      - breeder_or_foundation_seed
+      - fertilizers
+      - crop_protection_products
+      - diesel_or_field_energy
+    required_product_outputs:
+      - cleaned_wheat_seed
+      - rejected_seed_or_screenings
+    required_elementary_outputs:
+      - dinitrogen_monoxide_to_air
+      - ammonia_to_air
+      - nitrate_to_water
+      - carbon_dioxide_fossil_to_air
+  - id: post_harvest_seed_conditioning
+    process_scope: "drying, cleaning, grading, treatment, packaging, and storage"
+    required_product_inputs:
+      - electricity
+      - heat_or_fuel
+      - packaging
+      - seed_treatment_active_ingredients
+    required_product_outputs:
+      - certified_wheat_seed
+      - screenings
+      - packaging_waste
+qa_rules:
+  - id: reference_flow_has_seed_quality
+    severity: warning
+    description: "Reference flow should state moisture content basis, purity class, germination rate, and treatment status when known."
+  - id: inventory_has_agronomic_basis
+    severity: error
+    description: "Field production inventory must state yield, seed rate, fertilizer rates, irrigation status, and cultivation geography."
+  - id: coproduct_allocation_declared
+    severity: error
+    description: "Screenings, rejected seed, grain, and straw handling must declare cut-off, substitution, mass allocation, or economic allocation."

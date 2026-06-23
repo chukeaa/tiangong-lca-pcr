@@ -1,8 +1,0 @@
----
-pcr_id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.pulp-paper-and-paper-products-printed-matter-and-related-articles.32292-children-s-books-in-print
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Children's books, in print

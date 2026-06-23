@@ -1,8 +1,0 @@
----
-pcr_id: pcr.financial-and-related-services-real-estate-services-and-rental-and-leas-e49c6ad0.real-estate-services.72121-trade-services-of-residential-buildings
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Trade services of residential buildings

@@ -22,7 +22,7 @@ checkPaths:
   - classifications/**
   - library/modules/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: c9d9ff61cb5485fc9d90c0ee3d970d4df8ad3dbf
+lastReviewedCommit: edd52008c4e9be4c9e6e2bdcd53b0f9dd7f8e99d
 ---
 
 # Architecture
@@ -36,6 +36,8 @@ classification code -> mapping -> canonical PCR -> modules -> rendered PCR
 Canonical PCR records live under `library/pcrs/`. Classification source data and mappings live under `classifications/`.
 
 For CPC-backed bootstrapping, the builder stores the official source file and normalized hierarchy under `classifications/systems/cpc/<version>/`, then writes an explicit mapping file under `classifications/mappings/`. The CPC hierarchy seeds the initial PCR scaffold, but the generated PCR directory remains the canonical PCR identity.
+
+PCR directory slugs must not embed external classification codes. A CPC leaf such as `01111 Wheat, seed` maps to a semantic PCR directory such as `wheat-seed`; `01111` stays in `classifications/mappings/` and `classification_refs`.
 
 PCR records use a directory-level bilingual structure:
 

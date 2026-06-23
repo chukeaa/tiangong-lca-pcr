@@ -1,8 +1,0 @@
----
-pcr_id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.other-chemical-products-man-made-fibres.35120-artists-students-or-signboard-painters-colours-modifying-tints-amusement-colours-and-the-like
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

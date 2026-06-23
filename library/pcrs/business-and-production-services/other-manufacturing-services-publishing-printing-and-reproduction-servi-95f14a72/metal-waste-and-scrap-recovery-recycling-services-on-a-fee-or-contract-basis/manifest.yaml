@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.business-and-production-services.other-manufacturing-services-publishing-printing-and-reproduction-servi-95f14a72.metal-waste-and-scrap-recovery-recycling-services-on-a-fee-or-contract-basis
+title:
+  en: "Metal waste and scrap recovery (recycling) services, on a fee or contract basis"
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "business-and-production-services"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "89410"
+    title: "Metal waste and scrap recovery (recycling) services, on a fee or contract basis"
+    mapping_type: exact

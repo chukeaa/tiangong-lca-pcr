@@ -1,8 +1,0 @@
----
-pcr_id: pcr.food-products-beverages-and-tobacco-textiles-apparel-and-leather-products.yarn-and-thread-woven-and-tufted-textile-fabrics.26150-wool-and-fine-or-coarse-animal-hair-carded-or-combed
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

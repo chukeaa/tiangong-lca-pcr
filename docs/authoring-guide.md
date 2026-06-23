@@ -21,7 +21,7 @@ checkPaths:
   - library/pcrs/**
   - library/modules/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: c9d9ff61cb5485fc9d90c0ee3d970d4df8ad3dbf
+lastReviewedCommit: edd52008c4e9be4c9e6e2bdcd53b0f9dd7f8e99d
 ---
 
 # Authoring Guide
@@ -43,6 +43,8 @@ library/pcrs/<domain>/<subdomain>/<pcr-slug>/
 ```
 
 Keep language-independent identity and lifecycle state in `manifest.yaml`. Keep machine-oriented rules in `structured.yaml`. Keep human-readable English and Chinese text in `pcr.en.md` and `pcr.zh-CN.md`.
+
+Use semantic PCR slugs. Do not prefix or suffix PCR directories with CPC, HS, ISIC, NAICS, or other external classification codes. Classification codes belong in mapping files and `classification_refs`.
 
 ## CPC Scaffolded PCRs
 

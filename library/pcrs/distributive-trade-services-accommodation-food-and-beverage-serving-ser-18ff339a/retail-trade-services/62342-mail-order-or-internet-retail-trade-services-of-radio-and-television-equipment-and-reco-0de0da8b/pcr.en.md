@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62342-mail-order-or-internet-retail-trade-services-of-radio-and-television-equipment-and-reco-0de0da8b
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Mail order or Internet retail trade services, of radio and television equipment and recorded audio and video disks and tapes

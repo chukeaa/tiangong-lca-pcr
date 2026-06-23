@@ -1,8 +1,0 @@
----
-pcr_id: pcr.metal-products-machinery-and-equipment.electrical-machinery-and-apparatus.46330-ignition-wiring-sets-and-other-wiring-sets-of-a-kind-used-in-vehicles-aircraft-or-ships
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Ignition wiring sets and other wiring sets of a kind used in vehicles, aircraft or ships

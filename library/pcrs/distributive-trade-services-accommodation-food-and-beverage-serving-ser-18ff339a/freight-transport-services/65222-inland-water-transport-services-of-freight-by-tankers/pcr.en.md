@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.freight-transport-services.65222-inland-water-transport-services-of-freight-by-tankers
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Inland water transport services of freight by tankers

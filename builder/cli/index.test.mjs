@@ -111,6 +111,10 @@ test("scaffold-cpc creates PCR directories only for CPC leaf classes", () => {
 
     const wheatSeedDir = path.join(
       root,
+      "library/pcrs/agriculture-forestry-and-fishery-products/products-of-agriculture-horticulture-and-market-gardening/wheat-seed",
+    );
+    const codedWheatSeedDir = path.join(
+      root,
       "library/pcrs/agriculture-forestry-and-fishery-products/products-of-agriculture-horticulture-and-market-gardening/01111-wheat-seed",
     );
     const wheatDir = path.join(
@@ -122,6 +126,7 @@ test("scaffold-cpc creates PCR directories only for CPC leaf classes", () => {
     assert.equal(existsSync(path.join(wheatSeedDir, "pcr.en.md")), true);
     assert.equal(existsSync(path.join(wheatSeedDir, "pcr.zh-CN.md")), true);
     assert.equal(existsSync(path.join(wheatSeedDir, "structured.yaml")), true);
+    assert.equal(existsSync(codedWheatSeedDir), false);
     assert.equal(existsSync(wheatDir), false);
 
     const leaves = JSON.parse(
@@ -135,12 +140,26 @@ test("scaffold-cpc creates PCR directories only for CPC leaf classes", () => {
       ["01111", "01112", "01121"],
     );
 
+    const slugs = JSON.parse(
+      readFileSync(
+        path.join(root, "classifications/systems/cpc/3.0/normalized/leaf-slugs.json"),
+        "utf8",
+      ),
+    );
+    const wheatSeedSlug = slugs.leaves.find((entry) => entry.code === "01111");
+    assert.equal(
+      wheatSeedSlug.pcr_dir,
+      "library/pcrs/agriculture-forestry-and-fishery-products/products-of-agriculture-horticulture-and-market-gardening/wheat-seed",
+    );
+    assert.doesNotMatch(wheatSeedSlug.pcr_dir, /\/01111-/);
+
     const mapping = readFileSync(
       path.join(root, "classifications/mappings/cpc-3.0-to-pcr.yaml"),
       "utf8",
     );
     assert.match(mapping, /code: "01111"/);
-    assert.match(mapping, /pcr_id: "pcr\.agriculture-forestry-and-fishery-products\.products-of-agriculture-horticulture-and-market-gardening\.01111-wheat-seed"/);
+    assert.match(mapping, /pcr_id: "pcr\.agriculture-forestry-and-fishery-products\.products-of-agriculture-horticulture-and-market-gardening\.wheat-seed"/);
+    assert.doesNotMatch(mapping, /pcr_id: ".*\.01111-wheat-seed"/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
@@ -182,7 +201,8 @@ test("scaffold-cpc keeps generated PCR directory segments short for long CPC tit
 
     assert.equal(slugs.leaves.length, 1);
     assert.equal(maxSegmentLength <= 120, true);
-    assert.match(pcrDir, /26710-/);
+    assert.doesNotMatch(pcrDir, /\/26710-/);
+    assert.match(pcrDir, /woven-fabrics-of-man-made-filament-yarn-obtained-from-high-tenacity-yarn/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

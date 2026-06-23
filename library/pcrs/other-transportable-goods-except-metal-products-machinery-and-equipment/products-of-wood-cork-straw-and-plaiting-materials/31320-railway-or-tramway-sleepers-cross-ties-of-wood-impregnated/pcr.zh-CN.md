@@ -1,8 +1,0 @@
----
-pcr_id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.products-of-wood-cork-straw-and-plaiting-materials.31320-railway-or-tramway-sleepers-cross-ties-of-wood-impregnated
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

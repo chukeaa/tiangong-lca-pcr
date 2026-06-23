@@ -1,8 +1,0 @@
----
-pcr_id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.wastes-or-scraps.39366-waste-and-scrap-of-tin
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Waste and scrap of tin

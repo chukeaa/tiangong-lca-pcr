@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.rental-services-of-transport-vehicles-with-operators.66012-rental-services-of-trucks-with-operator
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

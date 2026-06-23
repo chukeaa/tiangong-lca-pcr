@@ -1,8 +1,0 @@
----
-pcr_id: pcr.agriculture-forestry-and-fishery-products.products-of-agriculture-horticulture-and-market-gardening.01239-other-fruit-bearing-vegetables
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

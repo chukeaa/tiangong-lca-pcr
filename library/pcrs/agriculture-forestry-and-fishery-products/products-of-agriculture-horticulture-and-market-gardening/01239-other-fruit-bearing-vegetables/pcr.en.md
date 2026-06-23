@@ -1,8 +1,0 @@
----
-pcr_id: pcr.agriculture-forestry-and-fishery-products.products-of-agriculture-horticulture-and-market-gardening.01239-other-fruit-bearing-vegetables
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Other fruit-bearing vegetables

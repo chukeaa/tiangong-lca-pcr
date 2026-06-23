@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.retail-trade-services.62285-specialized-store-retail-trade-services-of-electronic-and-telecommunications-equipment-and-parts
-language: zh-CN
-status: scaffold
-sync_with: pcr.en.md
----
-
-# 待补充

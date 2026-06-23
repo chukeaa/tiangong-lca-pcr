@@ -1,0 +1,37 @@
+schema_version: 1
+id: pcr.other-transportable-goods-except-metal-products-machinery-and-equipment.other-chemical-products-man-made-fibres.modelling-pastes-dental-wax-or-dental-impression-compounds-other-preparations-for-use-i-d3253287
+title:
+  en: "Modelling pastes; \"dental wax\" or \"dental impression compounds\"; other preparations for use in dentistry with a basis of plaster; preparations and charges for fire-extinguishers; charged fire-extinguishing grenades; prepared culture media for development and maintenance of micro-organisms and plant, human or animal cells; composite diagnostic or laboratory reagents n.e.c."
+  zh-CN: null
+status: scaffold
+pcr_kind: product_category_rule
+content_maturity: empty_scaffold
+domains:
+  - "other-transportable-goods-except-metal-products-machinery-and-equipment"
+modules:
+  core:
+    - pcr-minimum-content
+    - unit-of-analysis
+    - reference-flow
+    - inventory-flow-taxonomy
+    - system-boundary
+    - allocation
+    - data-quality
+    - validation-rules
+target_entities:
+  - flow
+  - process
+  - lifecyclemodel
+languages:
+  canonical: en
+  available:
+    - en
+    - zh-CN
+translation_status:
+  zh-CN: scaffold_pending_translation
+classification_refs:
+  - system: CPC
+    version: "3.0"
+    code: "35440"
+    title: "Modelling pastes; \"dental wax\" or \"dental impression compounds\"; other preparations for use in dentistry with a basis of plaster; preparations and charges for fire-extinguishers; charged fire-extinguishing grenades; prepared culture media for development and maintenance of micro-organisms and plant, human or animal cells; composite diagnostic or laboratory reagents n.e.c."
+    mapping_type: exact

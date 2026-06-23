@@ -1,8 +1,0 @@
----
-pcr_id: pcr.distributive-trade-services-accommodation-food-and-beverage-serving-ser-18ff339a.accommodation-food-and-beverage-services.63392-contract-food-services-for-transportation-operators
-language: en
-status: scaffold
-sync_with: pcr.zh-CN.md
----
-
-# Contract food services for transportation operators
