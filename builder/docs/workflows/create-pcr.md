@@ -23,7 +23,7 @@ Create is an initialization workflow. The agent may use domain common sense to d
 7. Define measurement and unit rules only where they affect consistency, conversion, or validation.
 8. Define common modelling processes before writing detailed inventory rows.
 9. For each process, write inventory rows by direction and flow type: product, waste, elementary.
-10. Record typical ranges only when they have a defensible basis. Use controlled vocabularies for range, evidence, and basis semantics.
+10. Record amounts or ranges only when they have a defensible basis. Use controlled vocabularies for `amount_kind`, `basis_kind`, and `evidence_kind`.
 11. Add external data sources and reference their source ids from inventory or rule rows.
 12. Move unresolved identity, range, or evidence gaps into `manifest.yaml` review metadata instead of putting review notes in PCR Markdown.
 13. Write `pcr.en-US.md` first.

@@ -5,10 +5,12 @@ required_columns:
   - Selected flow
   - Tiangong UUID
   - Flow property / unit
-  - Typical range
-  - Range basis
-  - Range sources
-  - Range type
+  - Amount
+  - amount_kind
+  - Basis
+  - basis_kind
+  - evidence_kind
+  - source_ids
 flow_types:
   product:
     description: Product or technosphere flow.

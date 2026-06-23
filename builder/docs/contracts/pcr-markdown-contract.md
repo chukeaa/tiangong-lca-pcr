@@ -64,7 +64,12 @@ Rules should constrain modelling consistency, conversion, or validation. Ordinar
 Process inventory must be organized as:
 
 ```markdown
-### Process: <process name>
+### Process Map
+
+| process_id | process_name | inclusion | inclusion_condition | role | quantitative_reference |
+| --- | --- | --- | --- | --- | --- |
+
+### Process: <process_id>
 
 #### Inputs
 
@@ -82,7 +87,7 @@ Process inventory must be organized as:
 Inventory row tables must keep stable columns:
 
 ```markdown
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
 ```
 
 ## Data Sources

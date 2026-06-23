@@ -21,7 +21,7 @@ checkPaths:
   - library/pcrs/**
   - library/modules/**
 lastReviewedAt: 2026-06-23
-lastReviewedCommit: 4a4bf1b408328fc309b181e962c2ae5df0e2d4ce
+lastReviewedCommit: 0778c96b0faa23026da60a6c0ac232c9ba333772
 ---
 
 # Authoring Guide
@@ -75,7 +75,7 @@ When constructing a `process` or `lifecyclemodel`, the items listed in `Required
 
 The measurement and unit rules section is not a catalog of every flow property or unit that may appear later. It should contain only rules that affect modelling consistency, conversion, or validation, such as reference mass basis, seed-count conversion, nitrogen fertilizer product/N basis, energy unit handling, or count-to-mass packaging conversion.
 
-Each inventory flow row should carry the selected flow UUID when available, the flow property/unit used in that row, typical range, range basis, range type, and source ids.
+Each inventory flow row should carry the selected flow UUID when available, the flow property/unit used in that row, `Amount`, `amount_kind`, `Basis`, `basis_kind`, `evidence_kind`, and `source_ids`.
 
 ## Tiangong CLI Evidence
 

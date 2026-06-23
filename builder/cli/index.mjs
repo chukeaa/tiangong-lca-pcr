@@ -38,6 +38,32 @@ const PCR_EN_FILE = "pcr.en-US.md";
 const PCR_ZH_FILE = "pcr.zh-CN.md";
 const MODULE_EN_FILE = "module.en-US.md";
 const MODULE_ZH_FILE = "module.zh-CN.md";
+const PROCESS_INCLUSION_VALUES = new Set(["required", "conditional", "optional", "excluded_by_default"]);
+const AMOUNT_KIND_VALUES = new Set([
+  "exact",
+  "range",
+  "formula",
+  "site_specific",
+  "product_specific",
+  "route_specific",
+  "not_applicable",
+]);
+const BASIS_KIND_VALUES = new Set([
+  "reference_flow",
+  "process_output",
+  "n_input",
+  "fuel_inventory",
+  "transport_service",
+  "storage_duration",
+  "crop_cycle",
+]);
+const EVIDENCE_KIND_VALUES = new Set([
+  "external_source",
+  "observed_dataset",
+  "method_formula",
+  "foreground_data",
+  "tiangong_default",
+]);
 
 function parseArgs(argv) {
   const [command, ...rest] = argv;
@@ -141,6 +167,7 @@ reference_flows: []
 flow_properties: []
 unit_conventions: []
 system_boundary: {}
+process_map: []
 process_inventory: []
 allocation_rules: []
 data_quality_rules: []
@@ -176,7 +203,12 @@ When constructing a \`process\` or \`lifecyclemodel\`, the items listed in \`Req
 
 ## 6. Process Inventory Structure
 
-### Process: <process name>
+### Process Map
+
+| process_id | process_name | inclusion | inclusion_condition | role | quantitative_reference |
+| --- | --- | --- | --- | --- | --- |
+
+### Process: <process_id>
 
 #### Inputs
 
@@ -231,7 +263,12 @@ function zhPcrBody() {
 
 ## 6. 过程清单结构
 
-### 过程：<过程名称>
+### 过程图
+
+| process_id | process_name | inclusion | inclusion_condition | role | quantitative_reference |
+| --- | --- | --- | --- | --- | --- |
+
+### 过程：<process_id>
 
 #### 输入
 
@@ -517,6 +554,7 @@ reference_flows: []
 flow_properties: []
 unit_conventions: []
 system_boundary: {}
+process_map: []
 process_inventory: []
 allocation_rules: []
 data_quality_rules: []
@@ -751,13 +789,34 @@ function parseInventoryRows(table, flowType) {
         flow_type: flowType,
         uuid,
         property_unit: stripInlineCode(tableCell(row, headerIndex, ["flow_property_unit"])),
-        typical_range: stripInlineCode(tableCell(row, headerIndex, ["typical_range", "range"])),
-        range_basis: stripInlineCode(tableCell(row, headerIndex, ["range_basis", "basis"])),
-        range_type: stripInlineCode(tableCell(row, headerIndex, ["range_type", "range_kind"])),
-        source_ids: extractSourceIds(tableCell(row, headerIndex, ["range_sources", "source_ids", "sources"])),
+        amount: stripInlineCode(tableCell(row, headerIndex, ["amount", "typical_range", "range"])),
+        amount_kind: stripInlineCode(tableCell(row, headerIndex, ["amount_kind", "range_kind", "range_type"])),
+        basis: stripInlineCode(tableCell(row, headerIndex, ["basis", "range_basis"])),
+        basis_kind: stripInlineCode(tableCell(row, headerIndex, ["basis_kind"])),
+        evidence_kind: stripInlineCode(tableCell(row, headerIndex, ["evidence_kind", "range_type"])),
+        source_ids: extractSourceIds(tableCell(row, headerIndex, ["source_ids", "range_sources", "sources"])),
       };
     })
     .filter((row) => row.role || row.name || row.uuid);
+}
+
+function parseProcessMapRows(table) {
+  const headerIndex = new Map(table.headers.map((header, index) => [normalizeHeader(header), index]));
+  if (!headerIndex.has("process_id")) {
+    return [];
+  }
+  return table.rows
+    .map((row) => ({
+      id: normalizeStructuredId(tableCell(row, headerIndex, ["process_id", "id"])),
+      name: stripInlineCode(tableCell(row, headerIndex, ["process_name", "name"])),
+      inclusion: stripInlineCode(tableCell(row, headerIndex, ["inclusion"])),
+      inclusion_condition: stripInlineCode(tableCell(row, headerIndex, ["inclusion_condition", "condition"])),
+      role: stripInlineCode(tableCell(row, headerIndex, ["role"])),
+      quantitative_reference: stripInlineCode(
+        tableCell(row, headerIndex, ["quantitative_reference", "reference"]),
+      ),
+    }))
+    .filter((row) => row.id || row.name);
 }
 
 function parseDataSourceRows(table) {
@@ -777,6 +836,7 @@ function parsePcrMarkdownToStructured(markdown) {
   const referenceFlows = [];
   let referenceFlowDefinition = null;
   const measurementRules = [];
+  const processMap = [];
   const processInventory = [];
   const dataSources = [];
   let section = "";
@@ -860,6 +920,8 @@ function parsePcrMarkdownToStructured(markdown) {
           }
         } else if (section === "measurement_rules") {
           measurementRules.push(...parseMeasurementRuleRows(table));
+        } else if (section === "process_inventory" && !currentProcess) {
+          processMap.push(...parseProcessMapRows(table));
         } else if (section === "process_inventory" && currentProcess && direction && flowType) {
           currentProcess[direction][flowType].push(...parseInventoryRows(table, flowType));
         } else if (section === "data_sources") {
@@ -870,7 +932,15 @@ function parsePcrMarkdownToStructured(markdown) {
     }
   }
 
-  return { referenceFlowDefinition, referenceFlows, measurementRules, processInventory, dataSources };
+  const processMapById = new Map(processMap.map((entry) => [entry.id, entry]));
+  for (const processEntry of processInventory) {
+    const mappedProcess = processMapById.get(processEntry.id);
+    if (mappedProcess?.name) {
+      processEntry.label = mappedProcess.name;
+    }
+  }
+
+  return { referenceFlowDefinition, referenceFlows, measurementRules, processMap, processInventory, dataSources };
 }
 
 function structuredProjectionYaml(projection) {
@@ -930,6 +1000,20 @@ function structuredProjectionYaml(projection) {
     }
   }
 
+  lines.push("process_map:");
+  if (projection.processMap.length === 0) {
+    lines.push("  []");
+  } else {
+    for (const processEntry of projection.processMap) {
+      lines.push("  - id: " + processEntry.id);
+      yamlKeyValue(lines, 4, "name", processEntry.name);
+      yamlKeyValue(lines, 4, "inclusion", processEntry.inclusion);
+      yamlKeyValue(lines, 4, "inclusion_condition", processEntry.inclusion_condition);
+      yamlKeyValue(lines, 4, "role", processEntry.role);
+      yamlKeyValue(lines, 4, "quantitative_reference", processEntry.quantitative_reference);
+    }
+  }
+
   lines.push("process_inventory:");
   if (projection.processInventory.length === 0) {
     lines.push("  []");
@@ -955,9 +1039,11 @@ function structuredProjectionYaml(projection) {
               yamlKeyValue(lines, 12, "uuid", row.uuid);
             }
             yamlKeyValue(lines, 10, "property_unit", row.property_unit);
-            yamlKeyValue(lines, 10, "typical_range", row.typical_range);
-            yamlKeyValue(lines, 10, "range_basis", row.range_basis);
-            yamlKeyValue(lines, 10, "range_type", row.range_type);
+            yamlKeyValue(lines, 10, "amount", row.amount);
+            yamlKeyValue(lines, 10, "amount_kind", row.amount_kind);
+            yamlKeyValue(lines, 10, "basis", row.basis);
+            yamlKeyValue(lines, 10, "basis_kind", row.basis_kind);
+            yamlKeyValue(lines, 10, "evidence_kind", row.evidence_kind);
             yamlStringArray(lines, 10, "source_ids", row.source_ids);
           }
         }
@@ -1323,6 +1409,78 @@ function toRepoRelative(root, absolutePath) {
   return path.relative(root, absolutePath).replaceAll(path.sep, "/");
 }
 
+function inventoryRows(processInventory) {
+  const rows = [];
+  for (const processEntry of processInventory) {
+    for (const direction of ["inputs", "outputs"]) {
+      for (const flowType of ["product", "waste", "elementary"]) {
+        for (const row of processEntry[direction][flowType]) {
+          rows.push({ processEntry, direction, flowType, row });
+        }
+      }
+    }
+  }
+  return rows;
+}
+
+function validatePcrProjection(markdownPath, projection, problems, root) {
+  const relativePath = toRepoRelative(root, markdownPath);
+  const rows = inventoryRows(projection.processInventory);
+  if (rows.length === 0 && projection.processMap.length === 0) {
+    return;
+  }
+
+  const processMapById = new Map(projection.processMap.map((entry) => [entry.id, entry]));
+  const processInventoryById = new Map(projection.processInventory.map((entry) => [entry.id, entry]));
+
+  if (projection.processMap.length === 0) {
+    problems.push(`${relativePath}: missing Process Map table in section 6`);
+  }
+
+  for (const entry of projection.processMap) {
+    if (!entry.id) {
+      problems.push(`${relativePath}: Process Map row is missing process_id`);
+    }
+    if (!PROCESS_INCLUSION_VALUES.has(entry.inclusion)) {
+      problems.push(`${relativePath}: Process Map ${entry.id || "(missing id)"} has invalid inclusion "${entry.inclusion}"`);
+    }
+    if (entry.inclusion === "conditional" && !entry.inclusion_condition) {
+      problems.push(`${relativePath}: conditional process ${entry.id} is missing inclusion_condition`);
+    }
+    if (entry.inclusion === "required" && !processInventoryById.has(entry.id)) {
+      problems.push(`${relativePath}: required process ${entry.id} has no detailed inventory section`);
+    }
+  }
+
+  for (const entry of projection.processInventory) {
+    if (projection.processMap.length > 0 && !processMapById.has(entry.id)) {
+      problems.push(`${relativePath}: detailed process ${entry.id} is not declared in Process Map`);
+    }
+  }
+
+  const sourceIds = new Set(projection.dataSources.map((source) => source.id));
+  for (const { processEntry, row } of rows) {
+    const context = `${relativePath}: process ${processEntry.id} flow "${row.role || row.name}"`;
+    if (!AMOUNT_KIND_VALUES.has(row.amount_kind)) {
+      problems.push(`${context} has invalid amount_kind "${row.amount_kind}"`);
+    }
+    if (!BASIS_KIND_VALUES.has(row.basis_kind)) {
+      problems.push(`${context} has invalid basis_kind "${row.basis_kind}"`);
+    }
+    if (!EVIDENCE_KIND_VALUES.has(row.evidence_kind)) {
+      problems.push(`${context} has invalid evidence_kind "${row.evidence_kind}"`);
+    }
+    if ((row.evidence_kind === "external_source" || row.evidence_kind === "method_formula") && row.source_ids.length === 0) {
+      problems.push(`${context} requires source_ids for evidence_kind ${row.evidence_kind}`);
+    }
+    for (const sourceId of row.source_ids) {
+      if (!sourceIds.has(sourceId)) {
+        problems.push(`${context} references unknown source_id ${sourceId}`);
+      }
+    }
+  }
+}
+
 function lint(options) {
   const root = rootFromOptions(options);
   const problems = [];
@@ -1344,6 +1502,15 @@ function lint(options) {
       if (!existsSync(candidate)) {
         problems.push(`Missing PCR file: ${toRepoRelative(root, candidate)}`);
       }
+    }
+    const canonicalMarkdown = path.join(directory, PCR_EN_FILE);
+    if (existsSync(canonicalMarkdown)) {
+      validatePcrProjection(
+        canonicalMarkdown,
+        parsePcrMarkdownToStructured(readFileSync(canonicalMarkdown, "utf8")),
+        problems,
+        root,
+      );
     }
   }
 

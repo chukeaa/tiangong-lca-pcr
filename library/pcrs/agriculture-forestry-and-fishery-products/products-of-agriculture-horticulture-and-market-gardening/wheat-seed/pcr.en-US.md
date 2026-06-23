@@ -71,23 +71,31 @@ Exclude downstream crop production using the seed unless the lifecycle model exp
 
 ## 6. Process Inventory Structure
 
-### Process: Field Seed Multiplication
+### Process Map
+
+| process_id | process_name | inclusion | inclusion_condition | role | quantitative_reference |
+| --- | --- | --- | --- | --- | --- |
+| field_seed_multiplication | Field Seed Multiplication | required |  | foreground | harvested seed crop |
+| seed_conditioning_and_treatment | Seed Conditioning and Treatment | required |  | foreground | cleaned seed output |
+| storage_and_delivery | Storage and Delivery | conditional | include when the declared gate is delivered seed or storage materially affects the reference flow | foreground/downstream | delivered seed |
+
+### Process: field_seed_multiplication
 
 #### Inputs
 
 ##### Product flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Previous-generation wheat seed | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 25-70 kg | per 1,000 kg harvested seed crop | `unl-wheat-seeding-rate`, `umn-small-grain-seeding-rate` | external_source |
-| Nitrogen fertilizer carrier | Urea | `3f8850c0-f718-4c4b-8fcb-8fd42e03aa8e` | Mass / kg | site-specific; record both kg product and kg N | per 1,000 kg harvested seed crop | `ipcc-2019-managed-soils-n2o` | site_specific |
-| Phosphate fertilizer | Phosphate fertilizer | `9c196b01-6aad-4252-a6e8-f853853a830c` | Mass / kg | site-specific | per 1,000 kg harvested seed crop |  | site_specific |
-| Potassium fertilizer | Potassium fertilizer | `dd008d87-16e4-4e85-a048-b9949f6fbca6` | Mass / kg | site-specific | per 1,000 kg harvested seed crop |  | site_specific |
-| Irrigation water supplied as a product input | Irrigation water | `4ad684b1-8e85-4dee-8d9c-55d1fa2d4432` | Mass / kg | 0-5,000 kg | per 1,000 kg harvested seed crop |  | site_specific |
-| Field machinery fuel | Diesel, burned in agricultural machinery | `57e0b1a3-2d05-46b2-b61b-cf7b5b167c6f` | Mass / kg | 5-40 kg | per 1,000 kg harvested seed crop |  | site_specific |
-| Crop protection herbicide proxy | Herbicide | `c1370404-9e2b-4ed6-ba96-c094f74e0f2d` | Mass / kg | product-specific | per active ingredient or formulated product |  | site_specific |
-| Crop protection fungicide proxy | Azoxystrobin | `8a1f4968-6428-413f-a50b-b413bf9190cf` | Mass / kg | product-specific | per active ingredient or formulated product |  | site_specific |
-| Crop protection insecticide proxy | Insecticide | `ba2ec0c8-d5da-4ca8-bf9f-317478a1ce1b` | Mass / kg | product-specific | per active ingredient or formulated product |  | site_specific |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Previous-generation wheat seed | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 25-70 kg | range | per 1,000 kg harvested seed crop | process_output | external_source | `unl-wheat-seeding-rate`, `umn-small-grain-seeding-rate` |
+| Nitrogen fertilizer carrier | Urea | `3f8850c0-f718-4c4b-8fcb-8fd42e03aa8e` | Mass / kg | site-specific; record both kg product and kg N | site_specific | per 1,000 kg harvested seed crop | process_output | foreground_data | `ipcc-2019-managed-soils-n2o` |
+| Phosphate fertilizer | Phosphate fertilizer | `9c196b01-6aad-4252-a6e8-f853853a830c` | Mass / kg | site-specific | site_specific | per 1,000 kg harvested seed crop | process_output | foreground_data |  |
+| Potassium fertilizer | Potassium fertilizer | `dd008d87-16e4-4e85-a048-b9949f6fbca6` | Mass / kg | site-specific | site_specific | per 1,000 kg harvested seed crop | process_output | foreground_data |  |
+| Irrigation water supplied as a product input | Irrigation water | `4ad684b1-8e85-4dee-8d9c-55d1fa2d4432` | Mass / kg | 0-5,000 kg | range | per 1,000 kg harvested seed crop | process_output | foreground_data |  |
+| Field machinery fuel | Diesel, burned in agricultural machinery | `57e0b1a3-2d05-46b2-b61b-cf7b5b167c6f` | Mass / kg | 5-40 kg | range | per 1,000 kg harvested seed crop | process_output | foreground_data |  |
+| Crop protection herbicide proxy | Herbicide | `c1370404-9e2b-4ed6-ba96-c094f74e0f2d` | Mass / kg | product-specific | product_specific | per active ingredient or formulated product | process_output | foreground_data |  |
+| Crop protection fungicide proxy | Azoxystrobin | `8a1f4968-6428-413f-a50b-b413bf9190cf` | Mass / kg | product-specific | product_specific | per active ingredient or formulated product | process_output | foreground_data |  |
+| Crop protection insecticide proxy | Insecticide | `ba2ec0c8-d5da-4ca8-bf9f-317478a1ce1b` | Mass / kg | product-specific | product_specific | per active ingredient or formulated product | process_output | foreground_data |  |
 
 ##### Waste flows
 
@@ -95,19 +103,19 @@ No waste input is normally required for the field multiplication process. Includ
 
 ##### Elementary flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Land occupation | Select applicable elementary flow for land occupation |  | Area-time / ha a | site-specific | per crop cycle |  | site_specific |
-| Water withdrawal | water | `419682fe-60fb-4b43-be89-bf2824b51104` | Mass / kg | align with irrigation water input | per 1,000 kg harvested seed crop |  | site_specific |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Land occupation | Select applicable elementary flow for land occupation |  | Area-time / ha a | site-specific | site_specific | per crop cycle | crop_cycle | foreground_data |  |
+| Water withdrawal | water | `419682fe-60fb-4b43-be89-bf2824b51104` | Mass / kg | align with irrigation water input | exact | per 1,000 kg harvested seed crop | process_output | foreground_data |  |
 
 #### Outputs
 
 ##### Product flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Harvested wheat seed crop | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 1,000 kg | field subprocess quantitative reference |  | observed_dataset |
-| Straw or field residue | Wheat straw | `bcaf0254-cdd3-43d1-823a-2f69df3801d8` | Mass / kg | 0-2,000 kg | per 1,000 kg harvested seed crop |  | site_specific |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Harvested wheat seed crop | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 1,000 kg | exact | field subprocess quantitative reference | process_output | observed_dataset |  |
+| Straw or field residue | Wheat straw | `bcaf0254-cdd3-43d1-823a-2f69df3801d8` | Mass / kg | 0-2,000 kg | range | per 1,000 kg harvested seed crop | process_output | foreground_data |  |
 
 ##### Waste flows
 
@@ -115,26 +123,26 @@ Declare any field waste sent to treatment separately when it leaves the field bo
 
 ##### Elementary flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Direct soil N2O emission to air | nitrous oxide, emissions to air unspecified | `08a91e70-3ddc-11dd-94c3-0050c2490048` | Mass / kg | calculate from N inputs; IPCC EF1 default is 1 percent of applied N as N2O-N | per N input | `ipcc-2019-managed-soils-n2o` | method_formula |
-| Ammonia volatilization to air | ammonia, emissions to air unspecified | `08a91e70-3ddc-11dd-a2a9-0050c2490048` | Mass / kg | site-specific or regional model | per N input | `ipcc-2019-managed-soils-n2o` | method_formula |
-| Nitrate leaching to water | nitrate, emissions to fresh water | `4d9a8790-3ddd-11dd-8d68-0050c2490048` | Mass / kg | site-specific or regional model | per N input | `ipcc-2019-managed-soils-n2o` | method_formula |
-| Fossil carbon dioxide from field energy | carbon dioxide (fossil), emissions to air unspecified | `08a91e70-3ddc-11dd-923d-0050c2490048` | Mass / kg | derived from fuel datasets | per fuel inventory |  | method_formula |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Direct soil N2O emission to air | nitrous oxide, emissions to air unspecified | `08a91e70-3ddc-11dd-94c3-0050c2490048` | Mass / kg | calculate from N inputs; IPCC EF1 default is 1 percent of applied N as N2O-N | formula | per N input | n_input | method_formula | `ipcc-2019-managed-soils-n2o` |
+| Ammonia volatilization to air | ammonia, emissions to air unspecified | `08a91e70-3ddc-11dd-a2a9-0050c2490048` | Mass / kg | site-specific or regional model | site_specific | per N input | n_input | method_formula | `ipcc-2019-managed-soils-n2o` |
+| Nitrate leaching to water | nitrate, emissions to fresh water | `4d9a8790-3ddd-11dd-8d68-0050c2490048` | Mass / kg | site-specific or regional model | site_specific | per N input | n_input | method_formula | `ipcc-2019-managed-soils-n2o` |
+| Fossil carbon dioxide from field energy | carbon dioxide (fossil), emissions to air unspecified | `08a91e70-3ddc-11dd-923d-0050c2490048` | Mass / kg | derived from fuel datasets | formula | per fuel inventory | fuel_inventory | tiangong_default |  |
 
-### Process: Seed Conditioning and Treatment
+### Process: seed_conditioning_and_treatment
 
 #### Inputs
 
 ##### Product flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Harvested seed crop input | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 1,000-1,250 kg | per 1,000 kg cleaned seed output | `usda-seed-cleaning-handling` | external_source |
-| Electricity for drying, cleaning, grading, treatment, and packaging | alternating current | `4d0361a3-56cc-45f9-aa42-bb9103285bf9` | Net calorific value / MJ or kWh | site-specific | per 1,000 kg cleaned seed output | `usda-seed-cleaning-handling` | site_specific |
-| Seed treatment fungicide proxy | Azoxystrobin | `8a1f4968-6428-413f-a50b-b413bf9190cf` | Mass / kg | product-specific | per kg treated seed |  | site_specific |
-| Seed treatment insecticide proxy | Insecticide | `ba2ec0c8-d5da-4ca8-bf9f-317478a1ce1b` | Mass / kg | product-specific | per kg treated seed |  | site_specific |
-| Packaging unit | Woven polypropylene bag | `9bfaad07-355e-467a-9bab-f95094e7c869` | Number of items / item | 20-50 bags | per 1,000 kg packaged seed, depending on bag size |  | site_specific |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Harvested seed crop input | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 1,000-1,250 kg | range | per 1,000 kg cleaned seed output | process_output | external_source | `usda-seed-cleaning-handling` |
+| Electricity for drying, cleaning, grading, treatment, and packaging | alternating current | `4d0361a3-56cc-45f9-aa42-bb9103285bf9` | Net calorific value / MJ or kWh | site-specific | site_specific | per 1,000 kg cleaned seed output | process_output | foreground_data | `usda-seed-cleaning-handling` |
+| Seed treatment fungicide proxy | Azoxystrobin | `8a1f4968-6428-413f-a50b-b413bf9190cf` | Mass / kg | product-specific | product_specific | per kg treated seed | process_output | foreground_data |  |
+| Seed treatment insecticide proxy | Insecticide | `ba2ec0c8-d5da-4ca8-bf9f-317478a1ce1b` | Mass / kg | product-specific | product_specific | per kg treated seed | process_output | foreground_data |  |
+| Packaging unit | Woven polypropylene bag | `9bfaad07-355e-467a-9bab-f95094e7c869` | Number of items / item | 20-50 bags | range | per 1,000 kg packaged seed, depending on bag size | process_output | foreground_data |  |
 
 ##### Waste flows
 
@@ -148,35 +156,35 @@ Include direct dust emissions, water use, or combustion emissions only when the 
 
 ##### Product flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Cleaned wheat seed for sowing | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 1,000 kg | PCR reference output |  | observed_dataset |
-| Marketable straw or residue owned by seed plant | Wheat straw | `bcaf0254-cdd3-43d1-823a-2f69df3801d8` | Mass / kg | optional | only if included in seed plant boundary |  | site_specific |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Cleaned wheat seed for sowing | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 1,000 kg | exact | PCR reference output | reference_flow | observed_dataset |  |
+| Marketable straw or residue owned by seed plant | Wheat straw | `bcaf0254-cdd3-43d1-823a-2f69df3801d8` | Mass / kg | optional | not_applicable | only if included in seed plant boundary | process_output | foreground_data |  |
 
 ##### Waste flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Screenings, rejected seed, dust, and off-grade material | Rejects | `e6d6aa78-105e-4acc-a84b-46f68765a1cc` | Mass / kg | 10-200 kg | per 1,000 kg cleaned seed output | `usda-seed-cleaning-handling` | external_source |
-| Packaging waste | Select applicable packaging waste flow |  | Mass / kg | site-specific | per 1,000 kg packaged seed |  | site_specific |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Screenings, rejected seed, dust, and off-grade material | Rejects | `e6d6aa78-105e-4acc-a84b-46f68765a1cc` | Mass / kg | 10-200 kg | range | per 1,000 kg cleaned seed output | process_output | external_source | `usda-seed-cleaning-handling` |
+| Packaging waste | Select applicable packaging waste flow |  | Mass / kg | site-specific | site_specific | per 1,000 kg packaged seed | process_output | foreground_data |  |
 
 ##### Elementary flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Cleaning dust emitted to air | Select applicable particulate flow |  | Mass / kg | site-specific | per 1,000 kg cleaned seed output | `usda-seed-cleaning-handling` | site_specific |
-| Fossil carbon dioxide from conditioning energy | carbon dioxide (fossil), emissions to air unspecified | `08a91e70-3ddc-11dd-923d-0050c2490048` | Mass / kg | derived from energy datasets | per process inventory |  | method_formula |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Cleaning dust emitted to air | Select applicable particulate flow |  | Mass / kg | site-specific | site_specific | per 1,000 kg cleaned seed output | process_output | foreground_data | `usda-seed-cleaning-handling` |
+| Fossil carbon dioxide from conditioning energy | carbon dioxide (fossil), emissions to air unspecified | `08a91e70-3ddc-11dd-923d-0050c2490048` | Mass / kg | derived from energy datasets | formula | per process inventory | fuel_inventory | tiangong_default |  |
 
-### Process: Storage and Delivery
+### Process: storage_and_delivery
 
 #### Inputs
 
 ##### Product flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Storage electricity | alternating current | `4d0361a3-56cc-45f9-aa42-bb9103285bf9` | Net calorific value / MJ or kWh | site-specific | per storage duration |  | site_specific |
-| Delivery transport fuel | Diesel oil | `9d258d75-6792-4f1c-9856-81602ed8f816` | Mass / kg | route-specific | per tonne-km |  | site_specific |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Storage electricity | alternating current | `4d0361a3-56cc-45f9-aa42-bb9103285bf9` | Net calorific value / MJ or kWh | site-specific | site_specific | per storage duration | storage_duration | foreground_data |  |
+| Delivery transport fuel | Diesel oil | `9d258d75-6792-4f1c-9856-81602ed8f816` | Mass / kg | route-specific | route_specific | per tonne-km | transport_service | foreground_data |  |
 
 ##### Waste flows
 
@@ -190,21 +198,21 @@ Include direct storage emissions only when measured or required by the study goa
 
 ##### Product flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Declared delivered product | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 1,000 kg | if reference flow is delivered seed |  | observed_dataset |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Declared delivered product | Wheat | `12da5e7d-9b93-4404-8c7d-08f98bec6238` | Mass / kg | 1,000 kg | exact | if reference flow is delivered seed | reference_flow | observed_dataset |  |
 
 ##### Waste flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Storage loss or damaged seed | Rejects | `e6d6aa78-105e-4acc-a84b-46f68765a1cc` | Mass / kg | 0-20 kg | per 1,000 kg stored seed |  | site_specific |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Storage loss or damaged seed | Rejects | `e6d6aa78-105e-4acc-a84b-46f68765a1cc` | Mass / kg | 0-20 kg | range | per 1,000 kg stored seed | process_output | foreground_data |  |
 
 ##### Elementary flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Fossil carbon dioxide from storage or transport energy | carbon dioxide (fossil), emissions to air unspecified | `08a91e70-3ddc-11dd-923d-0050c2490048` | Mass / kg | derived from fuel and energy datasets | per process inventory |  | method_formula |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Fossil carbon dioxide from storage or transport energy | carbon dioxide (fossil), emissions to air unspecified | `08a91e70-3ddc-11dd-923d-0050c2490048` | Mass / kg | derived from fuel and energy datasets | formula | per process inventory | fuel_inventory | tiangong_default |  |
 
 ## 7. Allocation and Co-product Handling
 

@@ -16,9 +16,11 @@ Each flow row should record:
 - flow property UUID
 - unit group UUID
 - preferred reference unit
-- expected or typical range, when useful
-- range basis, such as `per 1,000 kg reference product`
-- source ids that support the flow identity and the range
-- range type, such as `observed_dataset`, `external_source`, `method_formula`, or `site_specific`
+- amount or expected range, when useful
+- `amount_kind`, using `builder/vocab/amount-kind.yaml`
+- basis, such as `per 1,000 kg reference product`
+- `basis_kind`, using `builder/vocab/basis-kind.yaml`
+- `evidence_kind`, using `builder/vocab/evidence-kind.yaml`
+- source ids that support non-default quantitative evidence or method formulas
 
 Keep flow identity evidence separate from range evidence. A database flow search can justify the UUID choice, but it does not by itself justify an inventory amount range unless a process row or external source supports that amount.

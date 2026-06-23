@@ -1,5 +1,5 @@
 schema_version: 1
-vocab: range_kind
+vocab: amount_kind
 values:
   exact:
     description: A single value is specified by the PCR.

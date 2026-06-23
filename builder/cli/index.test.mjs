@@ -126,7 +126,9 @@ test("optional PCR scaffold uses process inventory without construction trace se
     const structured = readFileSync(path.join(pcrDir, "structured.yaml"), "utf8");
 
     assert.match(enMarkdown, /## 6\. Process Inventory Structure/);
-    assert.match(enMarkdown, /### Process: <process name>/);
+    assert.match(enMarkdown, /### Process Map/);
+    assert.match(enMarkdown, /process_id/);
+    assert.match(enMarkdown, /### Process: <process_id>/);
     assert.match(enMarkdown, /#### Inputs/);
     assert.match(enMarkdown, /##### Product flows/);
     assert.match(enMarkdown, /##### Waste flows/);
@@ -136,7 +138,9 @@ test("optional PCR scaffold uses process inventory without construction trace se
     assert.doesNotMatch(enMarkdown, /CLI Lookup Trace|Agent Modelling Instructions|Open Questions|Review Status/);
 
     assert.match(zhMarkdown, /## 6\. 过程清单结构/);
-    assert.match(zhMarkdown, /### 过程：<过程名称>/);
+    assert.match(zhMarkdown, /### 过程图/);
+    assert.match(zhMarkdown, /process_id/);
+    assert.match(zhMarkdown, /### 过程：<process_id>/);
     assert.match(zhMarkdown, /#### 输入/);
     assert.match(zhMarkdown, /##### 产品流/);
     assert.match(zhMarkdown, /##### 废物流/);
@@ -202,23 +206,29 @@ sync_with: pcr.zh-CN.md
 
 ## 6. Process Inventory Structure
 
-### Process: Field Seed Multiplication
+### Process Map
+
+| process_id | process_name | inclusion | inclusion_condition | role | quantitative_reference |
+| --- | --- | --- | --- | --- | --- |
+| field_seed_multiplication | Field Seed Multiplication | required |  | foreground | harvested seed crop |
+
+### Process: field_seed_multiplication
 
 #### Inputs
 
 ##### Product flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Previous-generation wheat seed | Wheat | \`12da5e7d-9b93-4404-8c7d-08f98bec6238\` | Mass / kg | 25-70 kg | per 1,000 kg harvested seed crop | \`unl-wheat-seeding-rate\` | external_source |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Previous-generation wheat seed | Wheat | \`12da5e7d-9b93-4404-8c7d-08f98bec6238\` | Mass / kg | 25-70 kg | range | per 1,000 kg harvested seed crop | process_output | external_source | \`unl-wheat-seeding-rate\` |
 
 #### Outputs
 
 ##### Product flows
 
-| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Typical range | Range basis | Range sources | Range type |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Harvested wheat seed crop | Wheat | \`12da5e7d-9b93-4404-8c7d-08f98bec6238\` | Mass / kg | 1,000 kg | process reference | \`tg-flow-wheat-seed\` | observed_dataset |
+| Flow role | Selected flow | Tiangong UUID | Flow property / unit | Amount | amount_kind | Basis | basis_kind | evidence_kind | source_ids |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Harvested wheat seed crop | Wheat | \`12da5e7d-9b93-4404-8c7d-08f98bec6238\` | Mass / kg | 1,000 kg | exact | process reference | process_output | observed_dataset |  |
 
 ## 10. Data Sources
 
@@ -247,9 +257,13 @@ sync_with: pcr.zh-CN.md
     assert.match(structured, /measurement_rules:/);
     assert.match(structured, /id: reference_mass/);
     assert.match(structured, /required_unit: "kg"/);
+    assert.match(structured, /process_map:/);
+    assert.match(structured, /inclusion: "required"/);
     assert.match(structured, /process_inventory:/);
     assert.match(structured, /id: field_seed_multiplication/);
-    assert.match(structured, /range_type: "external_source"/);
+    assert.match(structured, /amount_kind: "range"/);
+    assert.match(structured, /basis_kind: "process_output"/);
+    assert.match(structured, /evidence_kind: "external_source"/);
     assert.match(structured, /source_ids:/);
     assert.match(structured, /- unl-wheat-seeding-rate/);
     assert.doesNotMatch(structured, /01\.01\.002|@01|version: "01|cli_lookup_trace|review_status/);
