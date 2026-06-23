@@ -108,6 +108,8 @@ npm --silent run tiangong-pcr -- feedback draft --pcr <pcr-id> --type range_evid
 
 The public CLI intentionally does not provide fuzzy search in the first version. Agents should use deterministic classification `resolve` when a code is available, otherwise use `tree` and paginated `list` output to inspect PCR hierarchy and choose a candidate from product meaning and modelling boundary. `list` defaults to 10 records per page and prints next-page guidance in human-readable output.
 
+Use `npm --silent run tiangong-pcr -- --help` for the global Agent workflow and `npm --silent run tiangong-pcr -- <command> --help` for command-specific options, output shape, and next-step guidance.
+
 ## Initial Status
 
 This repository is intentionally scaffold-first. It establishes the layout and contracts for CPC-backed PCR scaffold generation without treating the generated empty PCR files as reviewed PCR content.

@@ -36,10 +36,36 @@ test("list paginates to 10 records by default and suggests the next page", () =>
 test("help explains the Agent selection workflow", () => {
   const output = runCli(["--help"]);
 
+  assert.match(output, /Usage:/);
   assert.match(output, /Agent workflow/);
   assert.match(output, /resolve --classification/);
   assert.match(output, /tree\/list/);
   assert.match(output, /guidance --pcr/);
+});
+
+test("list help explains pagination and JSON output", () => {
+  const output = runCli(["list", "--help"]);
+
+  assert.match(output, /Usage: tiangong-pcr list/);
+  assert.match(output, /Defaults to 10 records per page/);
+  assert.match(output, /JSON output/);
+  assert.match(output, /next_command/);
+});
+
+test("resolve help explains deterministic mapping usage", () => {
+  const output = runCli(["resolve", "--help"]);
+
+  assert.match(output, /Usage: tiangong-pcr resolve/);
+  assert.match(output, /deterministic classification mapping/);
+  assert.match(output, /cpc:3.0:01111/);
+});
+
+test("feedback draft help lists feedback types", () => {
+  const output = runCli(["feedback", "draft", "--help"]);
+
+  assert.match(output, /Usage: tiangong-pcr feedback draft/);
+  assert.match(output, /range_evidence_update/);
+  assert.match(output, /translation_mismatch/);
 });
 
 test("resolve prints deterministic classification mapping as JSON", () => {

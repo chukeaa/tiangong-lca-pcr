@@ -120,6 +120,7 @@ Rules:
 - `resolve` must use deterministic mapping files under `classifications/mappings/**`.
 - `guidance` must consume `structured.yaml` and present Agent-facing rules without mutating PCR content.
 - `feedback draft` creates issue-ready candidate evidence; it does not update PCR truth.
+- `--help` must work globally and for each public command. Command help should include purpose, options, output shape where relevant, and Agent next-step guidance.
 - Agent skill guidance lives under `skills/tiangong-pcr/` and must remain thin. It should point agents to CLI commands and library contracts instead of duplicating PCR rules.
 - GitHub feedback intake surfaces live under `.github/ISSUE_TEMPLATE/`.
 

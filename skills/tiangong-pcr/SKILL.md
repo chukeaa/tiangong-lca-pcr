@@ -7,6 +7,14 @@ description: Use when selecting a TianGong PCR, reading PCR modelling guidance, 
 
 Use the checked-in PCR library through `tiangong-pcr`. Do not select PCR rules from memory when the CLI is available.
 
+Use command-specific help when unsure about arguments or output shape:
+
+```bash
+npm --silent run tiangong-pcr -- --help
+npm --silent run tiangong-pcr -- list --help
+npm --silent run tiangong-pcr -- guidance --help
+```
+
 ## Workflow
 
 1. If the user provides an external classification code, resolve it deterministically:

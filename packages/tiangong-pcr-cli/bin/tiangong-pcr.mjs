@@ -20,8 +20,8 @@ function main() {
     const root = path.resolve(String(options.root ?? defaultRoot));
     const format = String(options.format ?? "table");
 
-    if (options.help || command === "help") {
-      process.stdout.write(helpText());
+    if (options.help || command === "help" || !command) {
+      process.stdout.write(helpText(command, positional));
       return;
     }
     if (command === "list") {
@@ -242,8 +242,154 @@ function requireOption(options, key) {
   }
 }
 
-function helpText() {
+function helpText(command = "", positional = []) {
+  if (command === "list") {
+    return `Usage: tiangong-pcr list [options]
+
+Browse PCR records explicitly. This is catalog browsing, not fuzzy search.
+
+Options:
+  --status <status>                 Filter by manifest status, for example candidate or scaffold.
+  --content-maturity <state>        Filter by content maturity.
+  --page <n>                        Page number. Defaults to 1.
+  --page-size <n>                   Records per page. Defaults to 10 records per page.
+  --format json|markdown|table      Output format. Defaults to table.
+  --root <path>                     PCR repository root.
+
+JSON output:
+  {
+    "page": 1,
+    "page_size": 10,
+    "total_count": 2877,
+    "total_pages": 288,
+    "items": [],
+    "previous_command": null,
+    "next_command": "tiangong-pcr list --page 2",
+    "next_steps": []
+  }
+
+Agent next step:
+  Follow next_command for more pages. After selecting a candidate PCR, run:
+  tiangong-pcr guidance --pcr <pcr-id> --format json
+`;
+  }
+  if (command === "tree") {
+    return `Usage: tiangong-pcr tree [options]
+
+Show the PCR directory hierarchy so an Agent can inspect available categories before selecting a PCR.
+
+Options:
+  --depth <n>                       Limit hierarchy depth.
+  --format json|markdown            Output format. Defaults to table-style markdown.
+  --root <path>                     PCR repository root.
+
+Agent next step:
+  Use tree to narrow the category area, then use list or guidance for concrete PCR records.
+`;
+  }
+  if (command === "resolve") {
+    return `Usage: tiangong-pcr resolve --classification <system>:<version>:<code> [options]
+
+Resolve an external classification code through deterministic classification mapping files.
+This command does not perform fuzzy search.
+
+Options:
+  --classification <value>          Example: cpc:3.0:01111.
+  --format json                     Output format. JSON is recommended for Agents.
+  --root <path>                     PCR repository root.
+
+Example:
+  tiangong-pcr resolve --classification cpc:3.0:01111 --format json
+
+Agent next step:
+  Use the returned mapping.pcr_id with guidance --pcr <pcr-id> --format json.
+`;
+  }
+  if (command === "show") {
+    return `Usage: tiangong-pcr show --pcr <pcr-id> [options]
+
+Print the human-readable PCR Markdown.
+
+Options:
+  --pcr <pcr-id>                    PCR id to display.
+  --lang en-US|zh-CN                Markdown language. Defaults to en-US.
+  --root <path>                     PCR repository root.
+
+Agent next step:
+  Use show for human review. Use guidance for machine-readable model construction rules.
+`;
+  }
+  if (command === "guidance") {
+    return `Usage: tiangong-pcr guidance --pcr <pcr-id> [options]
+
+Print Agent-facing structured PCR guidance from generated structured.yaml.
+
+Options:
+  --pcr <pcr-id>                    PCR id.
+  --format json                     Output format. JSON is recommended for Agents.
+  --root <path>                     PCR repository root.
+
+JSON output includes:
+  pcr, reference_flow, measurement_rules, process_map, process_inventory, data_sources, validation_notes.
+
+Agent next step:
+  Build the process or lifecyclemodel from the guidance, then run validate-model.
+`;
+  }
+  if (command === "validate-model") {
+    return `Usage: tiangong-pcr validate-model --pcr <pcr-id> --input <file> [options]
+
+Check a process or lifecyclemodel draft against selected PCR guidance.
+
+Options:
+  --pcr <pcr-id>                    PCR id.
+  --input <file>                    Model draft file.
+  --format json                     Output format. JSON is recommended for Agents.
+  --root <path>                     PCR repository root.
+
+Agent next step:
+  Address findings in the model. If the PCR guidance is missing or unclear, create feedback.
+`;
+  }
+  if (command === "feedback" && positional[0] === "draft") {
+    return `Usage: tiangong-pcr feedback draft --type <feedback-type> [options]
+
+Create issue-ready Markdown for PCR maintainer feedback. Feedback is candidate evidence, not accepted PCR truth.
+
+Options:
+  --pcr <pcr-id>                    Affected PCR id when available.
+  --type <feedback-type>            Feedback type.
+  --affected-section <section>      Affected PCR section.
+  --process-id <process_id>         Affected process_id.
+  --flow-role <role>                Affected flow role.
+  --summary <text>                  Short finding summary.
+  --evidence <text>                 Evidence URLs, files, or notes.
+  --proposed-change <text>          Suggested change.
+  --format json|markdown            Output format. Defaults to markdown.
+
+Feedback types:
+  missing_pcr
+  classification_mapping_gap
+  unclear_reference_flow
+  wrong_or_missing_uuid
+  process_boundary_issue
+  inventory_flow_gap
+  range_evidence_update
+  unit_or_flow_property_issue
+  validation_rule_issue
+  translation_mismatch
+  source_update
+
+Agent next step:
+  Open a GitHub issue with the generated body, or hand it to a maintainer for intake.
+`;
+  }
+
   return `tiangong-pcr
+
+Usage:
+  tiangong-pcr <command> [options]
+  tiangong-pcr <command> --help
 
 Commands:
   list [--status <status>] [--content-maturity <state>] [--page <n>] [--page-size <n>] [--format json|markdown|table]
