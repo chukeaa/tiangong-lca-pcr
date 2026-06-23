@@ -4,6 +4,8 @@ This directory contains CLI tools, schemas, templates, fixtures, controlled voca
 
 The builder treats classification systems as inputs and mappings. It does not make PCR records subordinate to any one classification system.
 
+Public PCR consumption tools live under `packages/` and `skills/`. Do not add Agent-facing model-construction commands to `builder/cli/`; keep this directory focused on creating, updating, validating, and publishing PCR records.
+
 ## Directory Shape
 
 Machine-facing and execution-facing assets stay directly under `builder/`. Human and agent documentation lives under `builder/docs/`.

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TianGong PCR Feedback",
+  "type": "object",
+  "required": ["feedback_type", "summary"],
+  "properties": {
+    "feedback_type": {
+      "type": "string",
+      "enum": [
+        "missing_pcr",
+        "classification_mapping_gap",
+        "unclear_reference_flow",
+        "wrong_or_missing_uuid",
+        "process_boundary_issue",
+        "inventory_flow_gap",
+        "range_evidence_update",
+        "unit_or_flow_property_issue",
+        "validation_rule_issue",
+        "translation_mismatch",
+        "source_update"
+      ]
+    },
+    "pcr_id": { "type": "string" },
+    "pcr_version": { "type": "string" },
+    "affected_section": { "type": "string" },
+    "process_id": { "type": "string" },
+    "flow_role": { "type": "string" },
+    "summary": { "type": "string" },
+    "current_rule": { "type": "string" },
+    "proposed_change": { "type": "string" },
+    "evidence_sources": { "type": "string" },
+    "model_impact": { "type": "string" },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"]
+    },
+    "generated_by": { "type": "string" }
+  }
+}

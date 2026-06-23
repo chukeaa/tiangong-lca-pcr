@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TianGong PCR Agent Guidance",
+  "type": "object",
+  "required": ["schema_version", "guidance_kind", "pcr", "reference_flow", "process_map"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "guidance_kind": { "const": "tiangong-pcr-agent-guidance" },
+    "pcr": { "type": "object" },
+    "reference_flow": { "type": "object" },
+    "measurement_rules": { "type": "array" },
+    "process_map": { "type": "array" },
+    "process_inventory": { "type": "array" },
+    "data_sources": { "type": "array" },
+    "validation_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

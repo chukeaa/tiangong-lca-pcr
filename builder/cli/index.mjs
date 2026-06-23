@@ -31,6 +31,10 @@ const REQUIRED_DIRS = [
   "builder/templates",
   "builder/schemas",
   "builder/scripts",
+  "packages/pcr-core",
+  "packages/tiangong-pcr-cli",
+  "skills/tiangong-pcr",
+  ".github/ISSUE_TEMPLATE",
   "docs",
 ];
 

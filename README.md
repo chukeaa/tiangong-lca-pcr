@@ -12,12 +12,16 @@ whenToUse:
 whenToUpdate:
   - when repository layout changes
   - when builder CLI commands change
+  - when public PCR consumption CLI or Agent skill behavior changes
   - when the scaffold status changes
 checkPaths:
   - README.md
   - AGENTS.md
   - package.json
   - builder/**
+  - packages/**
+  - skills/**
+  - .github/ISSUE_TEMPLATE/**
   - classifications/**
   - library/modules/**
   - docs/**
@@ -39,6 +43,10 @@ PCR records are canonical methodology documents. Classification systems such as 
 - `classifications/systems/`: source and normalized classification-system data.
 - `classifications/mappings/`: mappings from external classification codes to canonical PCR ids.
 - `builder/`: CLI, scripts, schemas, templates, controlled vocabularies, and builder documentation for constructing and validating the PCR library.
+- `packages/pcr-core/`: shared library for reading PCR catalog, mapping, guidance, validation, and feedback draft data.
+- `packages/tiangong-pcr-cli/`: public Agent-facing CLI for consuming PCR guidance during LCA model construction.
+- `skills/tiangong-pcr/`: thin Agent skill for selecting PCRs, using guidance, validating drafts, and creating feedback.
+- `.github/ISSUE_TEMPLATE/`: structured PCR feedback and missing-PCR issue forms.
 - `docs/`: project-level architecture and authoring notes.
 
 ## PCR Record Shape
@@ -82,6 +90,22 @@ npm run validate
 PCR authors may use `tiangong-lca-cli` to search Tiangong database flow/process/lifecyclemodel records and copy selected UUID references into PCR content. The CLI is an authoring evidence tool, not a runtime dependency of this repository.
 
 Builder authoring docs live under `builder/docs/`. Start with `builder/AGENTS.md` for task routing and `builder/docs/index.md` for the compact documentation map.
+
+## Public PCR CLI
+
+Use `tiangong-pcr` when consuming PCRs to guide LCA `process` or `lifecyclemodel` construction:
+
+```bash
+npm run tiangong-pcr -- tree --depth 3 --format markdown
+npm run tiangong-pcr -- list --status candidate --format json
+npm run tiangong-pcr -- resolve --classification cpc:3.0:01111 --format json
+npm run tiangong-pcr -- show --pcr <pcr-id> --lang zh-CN
+npm run tiangong-pcr -- guidance --pcr <pcr-id> --format json
+npm run tiangong-pcr -- validate-model --pcr <pcr-id> --input <model-file> --format json
+npm run tiangong-pcr -- feedback draft --pcr <pcr-id> --type range_evidence_update --summary "<finding>"
+```
+
+The public CLI intentionally does not provide fuzzy search in the first version. Agents should use deterministic classification `resolve` when a code is available, otherwise use `tree` and `list` to inspect PCR hierarchy and choose a candidate from product meaning and modelling boundary.
 
 ## Initial Status
 

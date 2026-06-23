@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PCR Model Validation Input",
+  "description": "Flexible first-version input for validating process or lifecyclemodel drafts against PCR guidance.",
+  "oneOf": [
+    { "type": "object" },
+    { "type": "string" }
+  ]
+}

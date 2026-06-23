@@ -12,6 +12,7 @@ whenToUse:
 whenToUpdate:
   - when PCR directory contracts change
   - when classification mapping or builder CLI behavior changes
+  - when public PCR consumption CLI, skill, or feedback intake behavior changes
   - when repository validation expectations change
 checkPaths:
   - AGENTS.md
@@ -19,6 +20,9 @@ checkPaths:
   - .docpact/config.yaml
   - package.json
   - builder/**
+  - packages/**
+  - skills/**
+  - .github/ISSUE_TEMPLATE/**
   - classifications/**
   - library/modules/**
   - docs/**
@@ -37,6 +41,7 @@ This repository owns canonical PCR and modelling methodology assets for TianGong
 - Do not duplicate PCR records only because a new classification system is added.
 - Keep reusable method rules in `library/modules/` and category-specific rules in `library/pcrs/`.
 - Builder scripts must not depend on private workspace state.
+- Keep PCR production and PCR consumption separate: `builder/` owns library maintenance, while `packages/` and `skills/` expose reviewed PCR guidance to agents and humans.
 
 ## PCR Directory Contract
 
@@ -93,6 +98,29 @@ CLI commands and command meanings are documented in `builder/README.md`. Keep de
 
 Generated PCR leaf scaffolds under `library/pcrs/**` are intentionally excluded from docpact coverage. The builder, classification sources, mappings, schemas, modules, and project documents remain governed.
 
+## Public PCR Consumption CLI and Skill
+
+The public Agent-facing CLI lives under `packages/tiangong-pcr-cli/` and uses shared logic from `packages/pcr-core/`.
+
+Use this CLI to consume PCRs while constructing LCA `process` or `lifecyclemodel` data:
+
+```bash
+npm run tiangong-pcr -- tree --depth 3 --format markdown
+npm run tiangong-pcr -- list --status candidate --format json
+npm run tiangong-pcr -- resolve --classification cpc:3.0:01111 --format json
+npm run tiangong-pcr -- guidance --pcr <pcr-id> --format json
+npm run tiangong-pcr -- feedback draft --pcr <pcr-id> --type <feedback-type>
+```
+
+Rules:
+
+- `tree` and `list` are explicit catalog-browsing tools, not fuzzy search.
+- `resolve` must use deterministic mapping files under `classifications/mappings/**`.
+- `guidance` must consume `structured.yaml` and present Agent-facing rules without mutating PCR content.
+- `feedback draft` creates issue-ready candidate evidence; it does not update PCR truth.
+- Agent skill guidance lives under `skills/tiangong-pcr/` and must remain thin. It should point agents to CLI commands and library contracts instead of duplicating PCR rules.
+- GitHub feedback intake surfaces live under `.github/ISSUE_TEMPLATE/`.
+
 ## Context Routing
 
 Read only the context needed for the current task.
@@ -100,6 +128,7 @@ Read only the context needed for the current task.
 - For repo structure, PCR identity, classification mapping, or governance changes, use `AGENTS.md`, `README.md`, `docs/architecture.md`, and the target files.
 - For PCR content authoring, use `docs/authoring-guide.md`, then route through `builder/AGENTS.md`.
 - For builder CLI, schema, script, template, or vocab changes, use `builder/README.md`, then inspect only the affected implementation files.
+- For public PCR consumption CLI, Agent skill, or feedback issue template changes, inspect `packages/**`, `skills/tiangong-pcr/**`, `.github/ISSUE_TEMPLATE/**`, `README.md`, and `docs/architecture.md`.
 - For create, update, translate, review, or publish PCR workflows, start at `builder/AGENTS.md` and `builder/docs/index.md`.
 
 ## Validation

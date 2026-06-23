@@ -46,6 +46,13 @@ ownership:
           - library/indexes/**
           - library/catalog.yaml
       ownerRepo: pcr
+    - id: pcr-consumption-tools
+      paths:
+        include:
+          - packages/**
+          - skills/**
+          - .github/ISSUE_TEMPLATE/**
+      ownerRepo: pcr
 
 coverage:
   include:
@@ -57,6 +64,9 @@ coverage:
     - package.json
     - builder/**
     - classifications/**
+    - packages/**
+    - skills/**
+    - .github/ISSUE_TEMPLATE/**
     - library/catalog.yaml
     - library/indexes/**
     - library/modules/**
@@ -102,6 +112,13 @@ routing:
         - package.json
         - builder/cli/**
         - builder/scripts/**
+    consumption:
+      paths:
+        - packages/**
+        - skills/**
+        - .github/ISSUE_TEMPLATE/**
+        - README.md
+        - docs/architecture.md
 
 docInventory:
   include:
@@ -194,3 +211,25 @@ rules:
       - path: docs/authoring-guide.md
         mode: review_or_update
     reason: Reusable method modules and indexes are shared PCR authoring surfaces.
+  - id: pcr-consumption-contract
+    scope: repo
+    repo: pcr
+    triggers:
+      - path: packages/**
+        kind: public-consumption-tooling
+      - path: skills/**
+        kind: agent-skill
+      - path: .github/ISSUE_TEMPLATE/**
+        kind: feedback-intake-surface
+    requiredDocs:
+      - path: AGENTS.md
+        mode: review_or_update
+      - path: README.md
+        mode: review_or_update
+      - path: docs/architecture.md
+        mode: review_or_update
+      - path: docs/authoring-guide.md
+        mode: review_or_update
+      - path: .docpact/config.yaml
+        mode: review_or_update
+    reason: Public PCR consumption tools and feedback intake surfaces must stay aligned with repository boundaries and authoring workflows.

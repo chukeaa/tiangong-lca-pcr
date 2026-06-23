@@ -39,6 +39,13 @@ For translation, review, or publish work:
 - read the matching file under `builder/docs/workflows/`
 - read only the contracts named by that workflow
 
+For feedback issue intake or accepted feedback updates:
+
+- read `builder/docs/workflows/intake-feedback-issue.md`
+- if actionable, read `builder/docs/workflows/update-pcr-from-feedback.md`
+- inspect the issue body or feedback draft before editing
+- inspect public CLI files under `packages/**` only when feedback concerns consumption behavior rather than PCR methodology
+
 For classification scaffold or mapping work:
 
 - read `docs/classification-policy.md`
@@ -51,6 +58,12 @@ For CLI, schema, template, or scaffold behavior changes:
 - read `builder/README.md`
 - inspect the affected files under `builder/cli/`, `builder/scripts/`, `builder/schemas/`, `builder/templates/`, or `builder/vocab/`
 - update `builder/docs/**` only when behavior changes the authoring contract
+
+For public PCR consumption CLI or skill changes:
+
+- inspect `packages/pcr-core/`, `packages/tiangong-pcr-cli/`, `skills/tiangong-pcr/`, and `.github/ISSUE_TEMPLATE/`
+- keep `builder/cli/` focused on PCR library maintenance
+- update repo-level docs when the consumption boundary or commands change
 
 ## Required Commands
 

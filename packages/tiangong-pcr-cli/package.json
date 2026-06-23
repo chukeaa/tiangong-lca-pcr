@@ -1,0 +1,9 @@
+{
+  "name": "@tiangong-lca/tiangong-pcr-cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "tiangong-pcr": "bin/tiangong-pcr.mjs"
+  }
+}

@@ -6,12 +6,13 @@
   "scripts": {
     "init": "node builder/cli/index.mjs init",
     "lint": "node builder/cli/index.mjs lint",
-    "test": "node --test builder/cli/*.test.mjs",
+    "test": "node --test builder/cli/*.test.mjs packages/pcr-core/*.test.mjs packages/tiangong-pcr-cli/*.test.mjs",
     "validate": "npm run lint && npm test",
     "catalog:build": "node builder/scripts/build-catalog.mjs",
     "pcr:scaffold:cpc": "node builder/cli/index.mjs scaffold-cpc",
     "pcr:sync-structured": "node builder/cli/index.mjs sync-structured",
     "pcr:bump": "node builder/cli/index.mjs bump",
-    "pcr:publish": "node builder/cli/index.mjs publish"
+    "pcr:publish": "node builder/cli/index.mjs publish",
+    "tiangong-pcr": "node packages/tiangong-pcr-cli/bin/tiangong-pcr.mjs"
   }
 }

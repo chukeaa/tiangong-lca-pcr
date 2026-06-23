@@ -9,6 +9,8 @@ Use this index to choose the smallest relevant builder context.
 - `workflows/translate-pcr.md`: keep bilingual PCR renderings aligned.
 - `workflows/review-pcr.md`: review PCR methodology quality.
 - `workflows/publish-pcr.md`: publish or version a PCR.
+- `workflows/intake-feedback-issue.md`: triage external PCR feedback or missing-PCR issues.
+- `workflows/update-pcr-from-feedback.md`: apply accepted feedback to PCR content, mappings, translations, or public CLI behavior.
 
 ## Contracts
 

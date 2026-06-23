@@ -13,11 +13,15 @@ whenToUpdate:
   - when PCR authoring workflow changes
   - when required PCR files or maturity states change
   - when structured PCR rule expectations change
+  - when feedback intake or PCR update-from-feedback workflow changes
 checkPaths:
   - docs/authoring-guide.md
   - AGENTS.md
   - README.md
   - builder/**
+  - packages/**
+  - skills/**
+  - .github/ISSUE_TEMPLATE/**
   - library/pcrs/**
   - library/modules/**
 lastReviewedAt: 2026-06-23
@@ -29,6 +33,8 @@ lastReviewedCommit: 4b4fb01e69672a05ce3e63d7c8a31a263551a353
 Author PCR content in canonical PCR files under `library/pcrs/`.
 
 Agents should start from `builder/AGENTS.md`, then use `builder/docs/index.md` to choose the smallest relevant workflow, tool note, contract, or method note.
+
+When the trigger is external PCR feedback, start with `builder/docs/workflows/intake-feedback-issue.md`. Treat the issue as candidate evidence until sources, UUIDs, and modelling impact are verified. If accepted, continue with `builder/docs/workflows/update-pcr-from-feedback.md`.
 
 Use mapping files under `classifications/mappings/` to connect external classification codes to canonical PCR ids.
 
@@ -115,6 +121,8 @@ For ranges, distinguish:
 Flow identity sources and range sources can differ. A flow UUID may come from a CLI flow search while its amount range comes from a process row, literature source, method formula, or foreground site data.
 
 Create workflows may use common sense to initialize candidate processes, likely input/output flows, and search terms. Update workflows are input-driven: begin from the specific user request, document, file, dataset, reviewer feedback, or database alignment change, then update only the affected PCR sections and lifecycle metadata.
+
+Public `tiangong-pcr` guidance is a consumption view over PCR content. If Agent use of `guidance` reveals missing or ambiguous instructions, capture that through feedback issue templates or `npm run tiangong-pcr -- feedback draft` rather than adding ad-hoc local modelling rules.
 
 ## CPC Scaffolded PCRs
 
