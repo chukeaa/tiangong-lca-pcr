@@ -12,6 +12,8 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 
+import { parseYaml } from "../../packages/pcr-core/src/yaml-lite.mjs";
+
 const cliPath = path.resolve("builder/cli/index.mjs");
 const sampleCpcPath = path.resolve("builder/fixtures/cpc-structure.sample.csv");
 
@@ -20,6 +22,15 @@ function makeTempRoot() {
 }
 
 function runCli(args, options = {}) {
+  return execFileSync(process.execPath, [cliPath, ...args], {
+    cwd: path.resolve("."),
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+    ...options,
+  });
+}
+
+function runCliFailure(args, options = {}) {
   return execFileSync(process.execPath, [cliPath, ...args], {
     cwd: path.resolve("."),
     encoding: "utf8",
@@ -569,7 +580,7 @@ test("bump and publish update PCR manifest lifecycle fields", () => {
       "小麦种子生产",
     ]);
 
-    runCli([
+    const bumpOutput = runCli([
       "bump",
       "--root",
       root,
@@ -578,11 +589,15 @@ test("bump and publish update PCR manifest lifecycle fields", () => {
       "--level",
       "minor",
     ]);
+    assert.match(bumpOutput, /Updated PCR manifest version at library\/pcrs\/agriculture\/crops\/wheat-seed\/manifest.yaml/);
     let manifest = readFileSync(path.join(pcrDir, "manifest.yaml"), "utf8");
-    assert.match(manifest, /version: "0\.1\.0"/);
-    assert.match(manifest, /updated_at_utc:/);
+    let parsedManifest = parseYaml(manifest);
+    assert.equal(parsedManifest.version, "0.1.0");
+    assert.ok(parsedManifest.updated_at_utc);
+    assert.equal(parsedManifest.title["en-US"], "Wheat seed production");
+    assert.deepEqual(parsedManifest.target_entities, ["flow", "process", "lifecyclemodel", "dataset"]);
 
-    runCli([
+    const publishOutput = runCli([
       "publish",
       "--root",
       root,
@@ -591,10 +606,52 @@ test("bump and publish update PCR manifest lifecycle fields", () => {
       "--version",
       "1.0.0",
     ]);
+    assert.match(publishOutput, /Synced structured PCR from library\/pcrs\/agriculture\/crops\/wheat-seed\/pcr.en-US.md/);
+    assert.match(publishOutput, /Published PCR manifest at library\/pcrs\/agriculture\/crops\/wheat-seed\/manifest.yaml/);
     manifest = readFileSync(path.join(pcrDir, "manifest.yaml"), "utf8");
-    assert.match(manifest, /status: published/);
-    assert.match(manifest, /version: "1\.0\.0"/);
-    assert.match(manifest, /published_at_utc:/);
+    parsedManifest = parseYaml(manifest);
+    assert.equal(parsedManifest.status, "published");
+    assert.equal(parsedManifest.version, "1.0.0");
+    assert.ok(parsedManifest.published_at_utc);
+    assert.equal(parsedManifest.title["zh-CN"], "小麦种子生产");
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("unknown builder command fails explicitly", () => {
+  assert.throws(
+    () => runCliFailure(["nope"]),
+    (error) => {
+      assert.notEqual(error.status, 0);
+      assert.match(String(error.stderr), /Unknown command: nope/);
+      return true;
+    },
+  );
+});
+
+test("builder mutation commands report actionable missing target errors", () => {
+  const root = makeTempRoot();
+  try {
+    runCli(["init", "--root", root]);
+
+    assert.throws(
+      () => runCliFailure(["bump", "--root", root, "--level", "patch"]),
+      (error) => {
+        assert.notEqual(error.status, 0);
+        assert.match(String(error.stderr), /Missing required --pcr <library\/pcrs\/\.\.\.> option/);
+        return true;
+      },
+    );
+
+    assert.throws(
+      () => runCliFailure(["sync-structured", "--root", root, "--pcr", "library/pcrs/missing"]),
+      (error) => {
+        assert.notEqual(error.status, 0);
+        assert.match(String(error.stderr), /PCR directory not found:/);
+        return true;
+      },
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

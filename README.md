@@ -25,8 +25,8 @@ checkPaths:
   - classifications/**
   - library/modules/**
   - docs/**
-lastReviewedAt: 2026-06-23
-lastReviewedCommit: 4b4fb01e69672a05ce3e63d7c8a31a263551a353
+lastReviewedAt: 2026-06-24
+lastReviewedCommit: ed53233f90b96a7c68d972d26e364efb35bc94ac
 ---
 
 # TianGong LCA PCR Library

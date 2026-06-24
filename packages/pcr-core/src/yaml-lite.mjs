@@ -13,6 +13,10 @@ export function parseYaml(text) {
   return value ?? {};
 }
 
+export function renderYaml(value) {
+  return `${renderNode(value, 0).join("\n")}\n`;
+}
+
 function parseBlock(lines, startIndex, indent) {
   let index = skipBlank(lines, startIndex);
   if (index >= lines.length || lines[index].indent < indent) {
@@ -161,4 +165,82 @@ function skipBlank(lines, startIndex) {
     index += 1;
   }
   return index;
+}
+
+function renderNode(value, indent) {
+  if (Array.isArray(value)) {
+    return renderArray(value, indent);
+  }
+  if (value && typeof value === "object") {
+    return renderObject(value, indent);
+  }
+  return [`${" ".repeat(indent)}${renderScalar(value)}`];
+}
+
+function renderObject(object, indent) {
+  const lines = [];
+  for (const [key, value] of Object.entries(object)) {
+    const prefix = `${" ".repeat(indent)}${key}:`;
+    if (Array.isArray(value)) {
+      if (value.length === 0) {
+        lines.push(`${prefix} []`);
+      } else {
+        lines.push(prefix);
+        lines.push(...renderArray(value, indent + 2));
+      }
+      continue;
+    }
+    if (value && typeof value === "object") {
+      if (Object.keys(value).length === 0) {
+        lines.push(`${prefix} {}`);
+      } else {
+        lines.push(prefix);
+        lines.push(...renderObject(value, indent + 2));
+      }
+      continue;
+    }
+    lines.push(`${prefix} ${renderScalar(value)}`);
+  }
+  return lines;
+}
+
+function renderArray(values, indent) {
+  const lines = [];
+  for (const value of values) {
+    if (Array.isArray(value)) {
+      lines.push(`${" ".repeat(indent)}-`);
+      lines.push(...renderArray(value, indent + 2));
+      continue;
+    }
+    if (value && typeof value === "object") {
+      const entries = Object.entries(value);
+      if (entries.length === 0) {
+        lines.push(`${" ".repeat(indent)}- {}`);
+        continue;
+      }
+      const [[firstKey, firstValue], ...rest] = entries;
+      if (firstValue && typeof firstValue === "object") {
+        lines.push(`${" ".repeat(indent)}- ${firstKey}:`);
+        lines.push(...renderNode(firstValue, indent + 4));
+      } else {
+        lines.push(`${" ".repeat(indent)}- ${firstKey}: ${renderScalar(firstValue)}`);
+      }
+      if (rest.length > 0) {
+        lines.push(...renderObject(Object.fromEntries(rest), indent + 2));
+      }
+      continue;
+    }
+    lines.push(`${" ".repeat(indent)}- ${renderScalar(value)}`);
+  }
+  return lines;
+}
+
+function renderScalar(value) {
+  if (value === null || value === undefined) {
+    return "null";
+  }
+  if (typeof value === "boolean") {
+    return value ? "true" : "false";
+  }
+  return JSON.stringify(String(value));
 }

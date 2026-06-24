@@ -18,6 +18,14 @@ function runCli(args) {
   });
 }
 
+function runCliFailure(args) {
+  return execFileSync(process.execPath, [cliPath, "--root", repoRoot, ...args], {
+    cwd: repoRoot,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+}
+
 test("list prints PCR records as JSON", () => {
   const output = runCli(["list", "--status", "candidate", "--format", "json"]);
   const page = JSON.parse(output);
@@ -120,4 +128,46 @@ test("feedback draft prints issue-ready Markdown", () => {
 
   assert.match(output, /PCR feedback: translation_mismatch/);
   assert.match(output, /Chinese and English process names diverge/);
+});
+
+test("unknown command fails explicitly", () => {
+  assert.throws(
+    () => runCliFailure(["nope"]),
+    (error) => {
+      assert.notEqual(error.status, 0);
+      assert.match(String(error.stderr), /Unknown command: nope/);
+      return true;
+    },
+  );
+});
+
+test("invalid output format fails explicitly", () => {
+  assert.throws(
+    () => runCliFailure(["list", "--format", "xml"]),
+    (error) => {
+      assert.notEqual(error.status, 0);
+      assert.match(String(error.stderr), /Invalid --format "xml"/);
+      return true;
+    },
+  );
+});
+
+test("invalid numeric options fail explicitly", () => {
+  assert.throws(
+    () => runCliFailure(["tree", "--depth", "abc"]),
+    (error) => {
+      assert.notEqual(error.status, 0);
+      assert.match(String(error.stderr), /Invalid --depth "abc"/);
+      return true;
+    },
+  );
+
+  assert.throws(
+    () => runCliFailure(["list", "--page-size", "0"]),
+    (error) => {
+      assert.notEqual(error.status, 0);
+      assert.match(String(error.stderr), /Invalid --page-size "0"/);
+      return true;
+    },
+  );
 });

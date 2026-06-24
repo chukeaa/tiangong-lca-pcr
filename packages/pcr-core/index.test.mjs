@@ -9,6 +9,7 @@ import {
   resolveClassification,
   validateDatasetAgainstGuidance,
 } from "./src/index.mjs";
+import { parseYaml, renderYaml } from "./src/yaml-lite.mjs";
 
 const repoRoot = path.resolve(".");
 const wheatSeedPcrId =
@@ -76,4 +77,26 @@ test("validateDatasetAgainstGuidance reports missing collection protocol records
 
   assert.ok(result.findings.some((finding) => finding.code === "missing_collection_protocol_record"));
   assert.ok(result.findings.some((finding) => finding.message.includes("cp_harvested_seed_mass")));
+});
+
+test("yaml-lite renders parseable structured YAML", () => {
+  const source = {
+    schema_version: "1",
+    id: "pcr.example",
+    title: {
+      "en-US": "Example PCR",
+      "zh-CN": null,
+    },
+    status: "published",
+    target_entities: ["flow", "process", "dataset"],
+    classification_refs: [
+      {
+        system: "CPC",
+        version: "3.0",
+        code: "01111",
+      },
+    ],
+  };
+
+  assert.deepEqual(parseYaml(renderYaml(source)), source);
 });
