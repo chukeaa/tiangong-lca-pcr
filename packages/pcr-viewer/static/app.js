@@ -22,11 +22,12 @@ async function boot() {
     state.selectedId = state.data.pcrs[0]?.id ?? "";
     render();
   } catch (error) {
-    app.innerHTML = `<section class="empty-state"><h1>PCR viewer data is unavailable</h1><p>${escapeHtml(error.message)}</p><p>Run <code>npm run viewer:build</code> and open the viewer through <code>npm run viewer:serve</code>.</p></section>`;
+    app.innerHTML = `<section class="empty-state"><h1>PCR viewer data is unavailable</h1><p>${escapeHtml(error.message)}</p><p>Build viewer data before serving this directory over HTTP.</p></section>`;
   }
 }
 
 function render() {
+  const searchFocus = captureSearchFocus();
   const pcrs = state.data?.pcrs ?? [];
   const filtered = filterPcrs(pcrs, state);
   if (!filtered.some((pcr) => pcr.id === state.selectedId)) {
@@ -53,6 +54,40 @@ function render() {
     </section>
   `;
   bindEvents();
+  restoreSearchFocus(searchFocus);
+}
+
+function captureSearchFocus() {
+  const queryInput = document.querySelector("#query");
+  if (!queryInput || document.activeElement !== queryInput) {
+    return null;
+  }
+  return {
+    selectionStart: queryInput.selectionStart ?? state.query.length,
+    selectionEnd: queryInput.selectionEnd ?? state.query.length,
+    selectionDirection: queryInput.selectionDirection ?? "none",
+  };
+}
+
+function restoreSearchFocus(searchFocus) {
+  if (!searchFocus) {
+    return;
+  }
+  const queryInput = document.querySelector("#query");
+  if (!queryInput) {
+    return;
+  }
+  try {
+    queryInput.focus({ preventScroll: true });
+  } catch {
+    queryInput.focus();
+  }
+  const valueLength = queryInput.value.length;
+  queryInput.setSelectionRange(
+    Math.min(searchFocus.selectionStart, valueLength),
+    Math.min(searchFocus.selectionEnd, valueLength),
+    searchFocus.selectionDirection,
+  );
 }
 
 function renderFilters(pcrs) {
