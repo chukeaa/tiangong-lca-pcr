@@ -1,13 +1,13 @@
 version: 1
 layout: repo
-lastReviewedAt: "2026-07-14"
-lastReviewedCommit: "41e00bafd03530af7871e4620e59862dd779473e"
+lastReviewedAt: "2026-09-13"
+lastReviewedCommit: "da2301271085ca4db71804ea458d898deaa59cd5"
 
 catalog:
   repos:
     - id: pcr
       path: .
-      canonicalRepo: chukeaa/tiangong-lca-pcr
+      canonicalRepo: tiangong-lca/pcr
       entryDoc: AGENTS.md
       workflowDocs:
         - README.md
@@ -184,6 +184,26 @@ rules:
       - path: docs/authoring-guide.md
         mode: review_or_update
     reason: Builder CLI, templates, and schemas define how PCR records are generated and validated.
+  - id: pcr-release-policy-contract
+    scope: repo
+    repo: pcr
+    triggers:
+      - path: builder/cli/index.mjs
+        kind: release-command-entry
+      - path: builder/lib/builder-operations.mjs
+        kind: release-operations
+      - path: builder/lib/published-revision-state.mjs
+        kind: release-state
+      - path: builder/lib/pcr-directory-transaction.mjs
+        kind: release-transaction
+      - path: docs/pcr-library-release-policy.md
+        kind: release-policy
+    requiredDocs:
+      - path: docs/pcr-library-release-policy.md
+        mode: review_or_update
+      - path: AGENTS.md
+        mode: review_or_update
+    reason: Publication, revision and recovery changes must retain the immutable release-chain policy and its agent-facing boundary.
   - id: pcr-classification-contract
     scope: repo
     repo: pcr

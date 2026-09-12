@@ -1,3 +1,29 @@
+---
+lastReviewedAt: 2026-09-13
+lastReviewedCommit: da2301271085ca4db71804ea458d898deaa59cd5
+title: PCR Library Release Policy
+docType: contract
+scope: repo
+status: active
+authoritative: true
+owner: tiangong-lca-pcr
+language: en
+whenToUse:
+  - when publishing, revising, or recovering PCR library releases
+whenToUpdate:
+  - when publication, revision, immutable history, or recovery behavior changes
+checkPaths:
+  - builder/cli/index.mjs
+  - builder/lib/builder-operations.mjs
+  - builder/lib/published-revision-state.mjs
+  - builder/lib/pcr-directory-transaction.mjs
+  - docs/pcr-library-release-policy.md
+related:
+  - ../AGENTS.md
+  - architecture.md
+  - authoring-guide.md
+---
+
 # PCR Library Release Policy
 
 Before first publication, PCR release state is authored in the top-level four-file current workspace. First
