@@ -24,8 +24,8 @@ checkPaths:
   - .github/ISSUE_TEMPLATE/**
   - library/pcrs/**
   - library/modules/**
-lastReviewedAt: 2026-07-14
-lastReviewedCommit: 41e00bafd03530af7871e4620e59862dd779473e
+lastReviewedAt: 2026-09-13
+lastReviewedCommit: da2301271085ca4db71804ea458d898deaa59cd5
 ---
 
 # Authoring Guide
